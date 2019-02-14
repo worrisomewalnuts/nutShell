@@ -3,7 +3,7 @@ import createFriends from "./createFriends"
 
 const populateProfile = () => {
     createFriends();
-    // createEvents();
+    createEvents();
     // createNews();
     // createTasks();
 }

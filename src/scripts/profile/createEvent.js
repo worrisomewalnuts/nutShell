@@ -27,9 +27,9 @@ const createEvents = () => {
             })
         })
 
-        document.querySelector("#eventContainer").addEventListener("click", function(){
+        document.querySelector("#eventsContainer").addEventListener("click", function(){
 
-            console.log(event.target.id)
+            console.log(event)
             //if(event.target.id)
         })
     })

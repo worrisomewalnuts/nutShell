@@ -20,9 +20,4 @@ const makeProfileHTML = (userId) => {
     printToDOM(html, ".output")
     populateProfile();
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> master
-
 export default makeProfileHTML
