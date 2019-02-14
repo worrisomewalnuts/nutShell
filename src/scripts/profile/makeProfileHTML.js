@@ -1,9 +1,10 @@
 import printToDOM for "./printToDOM"
 
-const makeProfileHTML = () => {
+const makeProfileHTML = (userId) => {
         html = ` <article>
             <img></img>
-            <section id="title"> NutShell
+            <input id = "userId" type = "Hidden" value = ${usedId}>
+            <section id = "title"> NutShell
             </section>
             <section id = "friends"></section>
             <section id = "news"></section>
