@@ -1,8 +1,8 @@
 const populateProfile = () => {
-    createFriendsListHtml();
-    createEventHtml();
-    createNewsHtml();
-    createTasksHtml();
+    createFriends();
+    createEvents();
+    createNews();
+    createTasks();
 }
 
 export default populateProfile
