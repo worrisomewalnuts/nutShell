@@ -1,4 +1,4 @@
-import printToDOM for "./printToDOM"
+import printToDOM from "./printToDOM"
 
 const makeProfileHTML = (userId) => {
         html = ` <article>
