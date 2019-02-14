@@ -1,9 +1,9 @@
-import printToDOM from "./printToDOM"
-
+import printToDOM from "../utilities/printToDOM"
+import populateProfile from "./populateProfile"
 const makeProfileHTML = (userId) => {
-        html = ` <article>
+    const html = ` <article>
             <img></img>
-            <input id = "userId" type = "Hidden" value = ${usedId}>
+            <input id = "userId" type = "Hidden" value = ${userId}>
             <section id = "title"> NutShell
             </section>
             <section id = "friends"></section>
@@ -12,7 +12,8 @@ const makeProfileHTML = (userId) => {
             <section id = "tasks"></section>
             <section id = "chats"></section>
         </article>`
-        printToDOM(html, ".container")
-    }
+    printToDOM(html, ".output")
+}
+populateProfile();
 
 export default makeProfileHTML

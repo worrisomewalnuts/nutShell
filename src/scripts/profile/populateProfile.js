@@ -1,8 +1,9 @@
+import createEvents from "./createEvent"
 const populateProfile = () => {
-    createFriends();
+   // createFriends();
     createEvents();
-    createNews();
-    createTasks();
+   // createNews();
+   // createTasks();
 }
 
 export default populateProfile
