@@ -1,7 +1,8 @@
+import createTasks from "./tasks/createTasks"
 const populateProfile = () => {
-    createFriends();
-    createEvents();
-    createNews();
+    //createFriends();
+    //createEvents();
+    //createNews();
     createTasks();
 }
 

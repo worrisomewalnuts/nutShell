@@ -1,5 +1,5 @@
 
-const taskList (tasks) => {
+const taskList = (tasks) => {
     console.log(tasks)
 }
 
