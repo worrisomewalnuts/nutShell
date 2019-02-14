@@ -27,10 +27,17 @@ const createEvents = () => {
             })
         })
 
-        document.querySelector("#eventsContainer").addEventListener("click", function(){
+        document.querySelector("#eventsContainer").addEventListener("click", function () {
 
-            console.log(event)
-            //if(event.target.id)
+            let action = event.target.id.split("--")[0]
+            let actionId = event.target.id.split("--")[1]
+
+            if (action === "edit") {
+
+            } else if (action === "delete") {
+                API.DELETE(`events/${actionId}`).then(() =>
+                    createEvents())
+            }
         })
     })
 }
