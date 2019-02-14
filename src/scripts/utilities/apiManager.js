@@ -11,6 +11,7 @@ const API = {
             },
             body: JSON.stringify(object)
         })
+        .then(response => response.json())
     },
     EDIT: (dbArray, object) => {
         return fetch(`http://127.0.0.1:8088/${dbArray}/${object.id}`, {
@@ -26,6 +27,7 @@ const API = {
         return fetch(`http://127.0.0.1:8088/${dbArray}/${object.id}`, {
             method: "DELETE"
         })
+        .then(response => response.json())
     }
 }
 
