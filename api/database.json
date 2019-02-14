@@ -81,7 +81,7 @@
         },
         {
             "id": 2,
-            "userId": 2,
+            "userId": 1,
             "taskName": "Wash the dog",
             "completionDate": "02/12/19",
             "completionStatus": false
