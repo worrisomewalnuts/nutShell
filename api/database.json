@@ -54,21 +54,24 @@
             "userId": 1,
             "newsURL": "https://news.mongabay.com/2019/01/bringing-the-tapir-back-to-borneo/",
             "news": "Bringing the Tapir Back to Borneo",
-            "newsSynopsis": "Efforts to save the endangered Malayan tapir"
+            "newsSynopsis": "Efforts to save the endangered Malayan tapir",
+            "date": "date"
         },
         {
             "id": 2,
             "userId": 2,
             "newsURL": "http://www.fox13news.com/trending/endangered-malayan-tapir-calf-born-at-zootampa",
             "news": "Endangered Malayan tapir calf born at ZooTampa",
-            "newsSynopsis": "New calf born!"
+            "newsSynopsis": "New calf born!",
+            "date": "date"
         },
         {
             "id": 3,
             "userId": 3,
             "newsURL": "https://www.tapirday.org/blog/what-should-the-focus-of-world-tapir-day-be",
             "news": "WHAT SHOULD BE THE FOCUS OF WORLD TAPIR DAY?",
-            "newsSynopsis": "How to best combine forces and efforts to benefit tapirs."
+            "newsSynopsis": "How to best combine forces and efforts to benefit tapirs.",
+            "date": "date"
         }
     ],
     "tasks": [
