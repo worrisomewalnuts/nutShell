@@ -1,5 +1,6 @@
 import API from "../utilities/apiManager"
 import friendHTML from "./friendHTML"
+import searchUsers from "./searchUsers";
 
 function createFriends() {
     let userId = document.querySelector("#userId").value
@@ -15,7 +16,7 @@ function createFriends() {
             userArray = parsedUserData
             friendList = friendArray.map((friendId) => {
                 return friendId = userArray.filter((user) => {
-                    if(user.id === friendId) {
+                    if (user.id === friendId) {
                         return user.userName
                     }
                 })
@@ -23,6 +24,12 @@ function createFriends() {
             return friendList
         })
         .then((friendList) => friendHTML(friendList))
+        .then(() => {
+            document.querySelector("#userSearchButton").addEventListener("click", () => {
+                let input = document.querySelector("#searchUsersInput").value
+                searchUsers(input)
+            })
+        })
 }
 
 export default createFriends

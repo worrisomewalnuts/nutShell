@@ -6,6 +6,7 @@ function friendHTML(friendList) {
         <label for="searchUsersInput" class="searchUsersInput">Search For New Users To Follow</label>
         <input type="text" name="searchUsersInput" id="searchUsersInput">
         <section id="userSearchResults"></section>
+        <button id="userSearchButton">Search For Users</button>
     </fieldset>
     <h1 id='FriendList'>Friends</h1>
     `
@@ -18,6 +19,7 @@ function friendHTML(friendList) {
         return friendHTML += currentHTML
     })
     printToDom(friendHTML,"#friends")
+    return
 }
 
 export default friendHTML
