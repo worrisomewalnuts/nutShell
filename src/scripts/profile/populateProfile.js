@@ -1,11 +1,12 @@
-import createEvents from "./createEvent"
-import createFriends from "./createFriends"
+//import createEvents from "./createEvent"
+//import createFriends from "./createFriends"
+import createTasks from "./createTasks";
 
 const populateProfile = () => {
-    createFriends();
+    //createFriends();
     // createEvents();
     // createNews();
-    // createTasks();
+     createTasks();
 }
 
 export default populateProfile

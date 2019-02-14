@@ -1,4 +1,4 @@
-import printToDom from "./utilities/printToDOM";
+import printToDom from "../utilities/printToDOM";
 
 const listHtml = (task) =>
     `<div id = "task--${task.id}"> ${task.taskName} ${task.completionDate}</div>
