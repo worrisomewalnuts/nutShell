@@ -30,6 +30,24 @@ function createFriends() {
                 searchUsers(input)
             })
         })
+        .then(() => {
+            document.querySelector("#friends").addEventListener("click", (event) => {
+                if (event.target.id.startsWith("delete--")) {
+                    let friendId = parseInt(event.target.id.split("--")[1])
+                    return API.GET("friendships")
+                        .then((parsedFriendData) => {
+                            let friendshipId = parsedFriendData.filter((friendship) => {
+                                friendship.userId === parseInt(userId) && friendship.friendId === friendId
+                            }).[0].id
+                            return friendshipId
+                        })
+                        .then((friendshipId) => API.DELETE(`friendships/${friendshipId}`))
+                        .then(() => {
+                            createFriends()
+                        })
+                }
+            })
+        })
 }
 
 export default createFriends

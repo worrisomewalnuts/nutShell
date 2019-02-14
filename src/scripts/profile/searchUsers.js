@@ -1,4 +1,3 @@
-import printToDOM from "../utilities/printToDOM"
 import API from "../utilities/apiManager"
 import printToDom from "../utilities/printToDOM";
 import createFriends from "./createFriends";
@@ -51,11 +50,9 @@ function searchUsers(input) {
                     newFriendship.friendId = parseInt(event.target.id.split("--")[1])
                     return API.POST("friendships", newFriendship)
                     .then(() => {
-                        createFriends();
+                        createFriends()
                     })
-                } else if (event.target.id.startsWith("unfollow--")) {
-                    let friendId = parseInt(event.target.id.split(--)[1])
-                }
+                } 
             })
         })
 
