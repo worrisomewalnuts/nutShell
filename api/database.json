@@ -1,104 +1,153 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "userName": "TheBigCheese",
-            "email": "MayorMcCheese@nashville.gov",
-            "pass": "password",
-            "firstName": "Mayor",
-            "lastName": "McCheese"
-        },
-        {
-            "id": 2,
-            "userName": "CaptainPlanet",
-            "email": "captainplanet@usn.mil",
-            "pass": "password",
-            "firstName": "Captain",
-            "lastName": "Planet"
-        },
-        {
-            "id": 3,
-            "userName": "HeMan",
-            "email": "HeMan@MastersOfTheUniverse.org",
-            "pass": "password",
-            "firstName": "He",
-            "lastName": "Man"
-        }
-    ],
-    "events": [
-        {
-            "id": 1,
-            "userId": 1,
-            "eventName": "1stEvent",
-            "eventDate": "TODO dateObject?",
-            "eventLocation": "LA"
-        },
-        {
-            "id": 2,
-            "userId": 2,
-            "eventName": "2ndEvent",
-            "eventDate": "TODO dateObject?",
-            "eventLocation": "New York City"
-        },
-        {
-            "id": 3,
-            "userId": 3,
-            "eventName": "3rdEvent",
-            "eventDate": "TODO dateObject?",
-            "eventLocation": "Nashville"
-        }
-    ],
-    "news": [
-        {
-            "id": 1,
-            "userId": 1,
-            "newsURL": "https://news.mongabay.com/2019/01/bringing-the-tapir-back-to-borneo/",
-            "news": "Bringing the Tapir Back to Borneo",
-            "newsSynopsis": "Efforts to save the endangered Malayan tapir"
-        },
-        {
-            "id": 2,
-            "userId": 2,
-            "newsURL": "http://www.fox13news.com/trending/endangered-malayan-tapir-calf-born-at-zootampa",
-            "news": "Endangered Malayan tapir calf born at ZooTampa",
-            "newsSynopsis": "New calf born!"
-        },
-        {
-            "id": 3,
-            "userId": 3,
-            "newsURL": "https://www.tapirday.org/blog/what-should-the-focus-of-world-tapir-day-be",
-            "news": "WHAT SHOULD BE THE FOCUS OF WORLD TAPIR DAY?",
-            "newsSynopsis": "How to best combine forces and efforts to benefit tapirs."
-        }
-    ],
-    "tasks": [
-        {
-            "id": 1,
-            "userId": 1,
-            "taskName": "Shopping",
-            "completionDate": "02/12/19",
-            "completionStatus": false
-        },
-        {
-            "id": 2,
-            "userId": 2,
-            "taskName": "Wash the dog",
-            "completionDate": "02/12/19",
-            "completionStatus": false
-        },
-        {
-            "id": 3,
-            "userId": 3,
-            "taskName": "Laundry",
-            "completionDate": "02/12/19",
-            "completionStatus": false
-        }
-    ],
-    "friendships": [
-        {
-            "id": 1,
-            "userId": 1,
-            "friendId": 3
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "userName": "TheBigCheese",
+      "email": "MayorMcCheese@nashville.gov",
+      "pass": "password",
+      "firstName": "Mayor",
+      "lastName": "McCheese"
+    },
+    {
+      "id": 2,
+      "userName": "CaptainPlanet",
+      "email": "captainplanet@usn.mil",
+      "pass": "password",
+      "firstName": "Captain",
+      "lastName": "Planet"
+    },
+    {
+      "id": 3,
+      "userName": "HeMan",
+      "email": "HeMan@MastersOfTheUniverse.org",
+      "pass": "password",
+      "firstName": "He",
+      "lastName": "Man"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "userId": 1,
+      "eventName": "1stEvent",
+      "eventDate": "TODO dateObject?",
+      "eventLocation": "LA"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "eventName": "2ndEvent",
+      "eventDate": "TODO dateObject?",
+      "eventLocation": "New York City"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "eventName": "3rdEvent",
+      "eventDate": "TODO dateObject?",
+      "eventLocation": "Nashville"
+    },
+    {
+      "userId": 1,
+      "eventName": "ddfdf",
+      "eventLocation": "fffdfd",
+      "eventDate": "fdf",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "eventName": "ddfdf",
+      "eventLocation": "fffdfd",
+      "eventDate": "fdf",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "eventName": "xx",
+      "eventLocation": "xx",
+      "eventDate": "xx",
+      "id": 6
+    },
+    {
+      "userId": 1,
+      "eventName": "xx",
+      "eventLocation": "xx",
+      "eventDate": "xx",
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "eventName": "cscs",
+      "eventLocation": "scsc",
+      "eventDate": "cscs",
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "eventName": "xvxvxvxv",
+      "eventLocation": "ssss",
+      "eventDate": "xvxvxvx",
+      "id": 9
+    },
+    {
+      "userId": 1,
+      "eventName": "FFFF",
+      "eventLocation": "FFFFF",
+      "eventDate": "FFFFF",
+      "id": 10
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "userId": 1,
+      "newsURL": "https://news.mongabay.com/2019/01/bringing-the-tapir-back-to-borneo/",
+      "news": "Bringing the Tapir Back to Borneo",
+      "newsSynopsis": "Efforts to save the endangered Malayan tapir"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "newsURL": "http://www.fox13news.com/trending/endangered-malayan-tapir-calf-born-at-zootampa",
+      "news": "Endangered Malayan tapir calf born at ZooTampa",
+      "newsSynopsis": "New calf born!"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "newsURL": "https://www.tapirday.org/blog/what-should-the-focus-of-world-tapir-day-be",
+      "news": "WHAT SHOULD BE THE FOCUS OF WORLD TAPIR DAY?",
+      "newsSynopsis": "How to best combine forces and efforts to benefit tapirs."
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "userId": 1,
+      "taskName": "Shopping",
+      "completionDate": "02/12/19",
+      "completionStatus": false
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "taskName": "Wash the dog",
+      "completionDate": "02/12/19",
+      "completionStatus": false
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "taskName": "Laundry",
+      "completionDate": "02/12/19",
+      "completionStatus": false
+    }
+  ],
+  "friendships": [
+    {
+      "id": 1,
+      "userId": 1,
+      "friendId": 3
+    }
+  ]
 }

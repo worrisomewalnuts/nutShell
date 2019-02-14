@@ -13,7 +13,8 @@ const makeProfileHTML = (userId) => {
             <section id = "chats"></section>
         </article>`
     printToDOM(html, ".output")
+    populateProfile();
 }
-populateProfile();
+
 
 export default makeProfileHTML
