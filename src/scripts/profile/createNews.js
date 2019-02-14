@@ -21,6 +21,8 @@ const createNews = () => {
                 }
             })
         })
+
+        // Add event listener on #news (bubbles!!)
 }
 
 
