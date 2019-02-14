@@ -1,6 +1,7 @@
 import API from "../utilities/apiManager"
 import printToDom from "../utilities/printToDOM"
 import newsHTML from "../profile/newsHTML"
+import newsForm from "./newsForm";
 
 const createNews = () => {
     // Get news objects from API
@@ -23,6 +24,13 @@ const createNews = () => {
         })
 
         // Add event listener on #news (bubbles!!)
+        document.querySelector("#news").addEventListener("click", (event) => {
+            if (event.target.id === "addNews") {
+                let newsFormHTML = newsForm()
+                let newsSection = document.querySelector("#news")
+                printToDom(newsFormHTML, "#news")
+            }
+        })
 }
 
 
