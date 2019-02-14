@@ -17,7 +17,7 @@ const createNews = () => {
                     newsArray.forEach(newsObject => {
                         let newsItemHTML = newsHTML(newsObject, userName) + "<button id='addNews'>Add News Item</button>"
                         // Print HTML news to DOM
-                        printToDom(newsItemHTML, "#news")
+                        printToDom(newsItemHTML, "#newsListSection")
                     })
                 }
             })
@@ -27,8 +27,7 @@ const createNews = () => {
         document.querySelector("#news").addEventListener("click", (event) => {
             if (event.target.id === "addNews") {
                 let newsFormHTML = newsForm()
-                let newsSection = document.querySelector("#news")
-                printToDom(newsFormHTML, "#news")
+                printToDom(newsFormHTML, "#newsFormSection")
             }
         })
 }

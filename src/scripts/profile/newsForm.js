@@ -1,5 +1,6 @@
 const newsForm = () => {
     return `
+    <h4>Add News Item</h4>
     <section id="newsForm">
     <label>Title: </label>
     <input type="text" id="newsTitle"></input>
