@@ -1,4 +1,4 @@
-import createTasks from "./tasks/createTasks"
+import createTasks from "./createTasks"
 const populateProfile = () => {
     //createFriends();
     //createEvents();
