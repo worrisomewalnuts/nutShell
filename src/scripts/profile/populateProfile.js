@@ -5,7 +5,7 @@ import createNews from "./createNews"
 const populateProfile = () => {
     createFriends();
     createEvents();
-    createNews();
+    // createNews();
     // createTasks();
 }
 

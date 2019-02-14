@@ -20,5 +20,4 @@ const makeProfileHTML = (userId) => {
     printToDOM(html, ".output")
     populateProfile();
 }
-
 export default makeProfileHTML
