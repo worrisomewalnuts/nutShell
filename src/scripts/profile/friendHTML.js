@@ -5,8 +5,8 @@ function friendHTML(friendList) {
     <fieldset id="searchUsers">
         <label for="searchUsersInput" class="searchUsersInput">Search For New Users To Follow</label>
         <input type="text" name="searchUsersInput" id="searchUsersInput">
-        <section id="userSearchResults"></section>
         <button id="userSearchButton">Search For Users</button>
+        <section id="userSearchResults"></section>
     </fieldset>
     <h1 id='FriendList'>Friends</h1>
     `
