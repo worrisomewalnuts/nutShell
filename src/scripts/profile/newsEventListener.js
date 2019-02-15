@@ -25,6 +25,7 @@ const newsEventListener = () => {
             }
 
             API.POST("news", newNewsObject)
+                .then(createNews())
 
         } else if (event.target.id.startsWith("deleteNews")) {       // DELETE button
             // Find ID of news item to remove
