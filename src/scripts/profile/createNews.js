@@ -1,7 +1,7 @@
 import API from "../utilities/apiManager"
 import printToDom from "../utilities/printToDOM"
 import newsHTML from "../profile/newsHTML"
-import newsForm from "./newsForm";
+import newsEventListener from "./newsEventListener"
 
 const createNews = () => {
     // Get news objects from API
@@ -21,10 +21,12 @@ const createNews = () => {
                 }
             })
             return idsToFind
+            // Get all news items for active user and their friends
         }).then(idsToFind => {
             let newsSearchString = `news?_expand=user&userId=${idsToFind.join("&userId=")}`
             API.GET(newsSearchString)
                 .then(newsArray => {
+                    // Create HTML representation of news items
                     let newsToPrint = ""
                     newsArray.forEach(newsObject => {
                         let newsItemHTML = newsHTML(newsObject)
@@ -36,19 +38,8 @@ const createNews = () => {
                     })
             })
             // Add event listener on #news (bubbles!!)
-            document.querySelector("#news").addEventListener("click", (event) => {
-                if (event.target.id === "addNews") {
-                    let newsFormHTML = newsForm()
-                    printToDom(newsFormHTML, "#newsFormSection")
-                }
-            })
+            newsEventListener()
         }
-
-
-
-
-
-
 
 
 
