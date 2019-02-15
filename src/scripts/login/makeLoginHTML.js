@@ -1,4 +1,5 @@
 import registerNewUser from "./registerNewUser"
+import userLogin from "./userLogin"
 
 const makeLoginHtml = () => {
     let html = `
@@ -13,7 +14,7 @@ const makeLoginHtml = () => {
     document.querySelector("#loginPageOptions").addEventListener("click", function(){
 
         if (event.target.id === "login"){
-            console.log("login")
+            userLogin()
         }else if(event.target.id === "signUp"){
             registerNewUser()
         }
