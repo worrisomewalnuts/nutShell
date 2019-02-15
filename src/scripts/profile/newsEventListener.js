@@ -5,11 +5,13 @@ import createNews from "./createNews";
 
 const newsEventListener = () => {
     document.querySelector("#news").addEventListener("click", (event) => {
-        if (event.target.id === "addNews") {                        // ADD NEWS ITEM button
+        // ADD NEWS ITEM button
+        if (event.target.id === "addNews") {
             let newsFormHTML = newsForm()
             printToDom(newsFormHTML, "#newsFormSection")
 
-        } else if (event.target.id === "submitNews") {              // SUBMIT button
+            // SUBMIT button
+        } else if (event.target.id === "submitNews") {
             let news = document.querySelector("#newsTitle").value
             let date = document.querySelector("#newsDate").value
             let newsSynopsis = document.querySelector("#newsSynopsis").value
@@ -21,13 +23,14 @@ const newsEventListener = () => {
                 date: date,
                 newsSynopsis: newsSynopsis,
                 newsURL: newsURL,
-                userId: userId
+                userId: parseInt(userId)
             }
 
             API.POST("news", newNewsObject)
                 .then(createNews)
 
-        } else if (event.target.id.startsWith("deleteNews")) {       // DELETE button
+        // DELETE button
+        } else if (event.target.id.startsWith("deleteNews")) {
             // Find ID of news item to remove
             let idToDelete = event.target.id.split("--")[1]
             let stringToDelete = `news/${idToDelete}`
@@ -38,7 +41,8 @@ const newsEventListener = () => {
                     createNews()
                 })
 
-        // } else if (event.target.id.startsWith("editNews") {          // EDIT button
+        // EDIT button
+        } else if (event.target.id.startsWith("editNews")) {
 
         }
     })
