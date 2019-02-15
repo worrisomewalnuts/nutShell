@@ -38,6 +38,9 @@ const createNews = () => {
                     })
             })
             // Add event listener on #news (bubbles!!)
+            let oldElement = document.querySelector("#news")
+            let newElement = oldElement.cloneNode(true)
+            oldElement.parentNode.replaceChild(newElement, oldElement)
             newsEventListener()
         }
 
