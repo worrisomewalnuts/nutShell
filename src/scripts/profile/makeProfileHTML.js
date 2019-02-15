@@ -20,8 +20,16 @@ const makeProfileHTML = (userId) => {
 
     printToDOM(html, ".output")
     let bigButton = document.querySelector("#bigButtonSection")
-    bigButton.classList.toggle("hidden")
-    bigButton.classList.toggle("visible")
+    if(bigButton.classList.contains("inChat")) {
+        bigButton.classList.toggle("inChat")
+        bigButton.classList.toggle("inProfile")
+    }
+    if(bigButton.classList.contains("hidden")){
+        bigButton.classList.toggle("hidden")
+        bigButton.classList.toggle("visible")
+        bigButton.classList.toggle("login")
+        bigButton.classList.toggle("inProfile")
+    }
     populateProfile();
 }
 export default makeProfileHTML
