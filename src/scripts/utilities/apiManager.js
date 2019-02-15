@@ -14,7 +14,7 @@ const API = {
         .then(response => response.json())
     },
     EDIT: (dbArray, object) => {
-        return fetch(`http://127.0.0.1:8088/${dbArray}/${object.id}`, {
+        return fetch(`http://127.0.0.1:8088/${dbArray}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -24,7 +24,7 @@ const API = {
             .then(res => res.json())
     },
     DELETE: (dbArray, object) => {
-        return fetch(`http://127.0.0.1:8088/${dbArray}/${object.id}`, {
+        return fetch(`http://127.0.0.1:8088/${dbArray}`, {
             method: "DELETE"
         })
         .then(response => response.json())
