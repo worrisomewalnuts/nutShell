@@ -20,29 +20,34 @@ const createNews = () => {
                     })
                 }
             })
-            console.log(idsToFind)
-        }).then()
-                    
-                    
-                    
-                    
-                    // let userName = user.userName
-                    // let newsArray = user.news
-                    // // Turn each matching news object into HTML
-                    // newsArray.forEach(newsObject => {
-                    //     let newsItemHTML = newsHTML(newsObject, userName) + "<button id='addNews'>Add News Item</button>"
-                    //     // Print HTML news to DOM
-                    //     printToDom(newsItemHTML, "#newsListSection")
-                    // })
+            return idsToFind
+        }).then(idsToFind => {
+            let newsSearchString = `news?_expand=user&userId=${idsToFind.join("&userId=")}`
+            API.GET(newsSearchString)
+                .then(newsArray => {
+                    let newsToPrint = ""
+                    newsArray.forEach(newsObject => {
+                        let newsItemHTML = newsHTML(newsObject)
+                        newsToPrint += `${newsItemHTML}`
+                    })
+                    newsToPrint += "<button id='addNews'>Add News Item</button>"
+                        // Print HTML news to DOM
+                        printToDom(newsToPrint, "#newsListSection")
+                    })
+            })
+            // Add event listener on #news (bubbles!!)
+            document.querySelector("#news").addEventListener("click", (event) => {
+                if (event.target.id === "addNews") {
+                    let newsFormHTML = newsForm()
+                    printToDom(newsFormHTML, "#newsFormSection")
+                }
+            })
+        }
 
-        // Add event listener on #news (bubbles!!)
-        document.querySelector("#news").addEventListener("click", (event) => {
-            if (event.target.id === "addNews") {
-                let newsFormHTML = newsForm()
-                printToDom(newsFormHTML, "#newsFormSection")
-            }
-        })
-}
+
+
+
+
 
 
 
