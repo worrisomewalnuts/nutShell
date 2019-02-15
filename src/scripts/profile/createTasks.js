@@ -10,7 +10,6 @@ const createTasks = () => {
 
     printToDom(taskHTML(),"#tasks")
     const id = $("#userId").value
-
     API.GET(`tasks?userId=${id}&completionStatus=false`)
         .then (tasks => taskList(tasks))
     taskManager.EL()
