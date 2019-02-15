@@ -7,21 +7,33 @@ const createNews = () => {
     // Get news objects from API
     API.GET("users?_embed=friendships&_embed=news")
         .then((userArray) => {
-            // Check IF userId on news objects matches active user
+            // Get user IDs for active user and all their friends
             let activeUser = parseInt(document.querySelector("#userId").value)
+            let idsToFind = []
+
             userArray.forEach (user => {
                 if (activeUser === user.id) {
-                    let userName = user.userName
-                    let newsArray = user.news
-                    // Turn each matching news object into HTML
-                    newsArray.forEach(newsObject => {
-                        let newsItemHTML = newsHTML(newsObject, userName) + "<button id='addNews'>Add News Item</button>"
-                        // Print HTML news to DOM
-                        printToDom(newsItemHTML, "#newsListSection")
+                    idsToFind.push(activeUser)
+                    let userFriends = user.friendships
+                    userFriends.forEach(friend => {
+                        idsToFind.push(friend.friendId)
                     })
                 }
             })
-        })
+            console.log(idsToFind)
+        }).then()
+                    
+                    
+                    
+                    
+                    // let userName = user.userName
+                    // let newsArray = user.news
+                    // // Turn each matching news object into HTML
+                    // newsArray.forEach(newsObject => {
+                    //     let newsItemHTML = newsHTML(newsObject, userName) + "<button id='addNews'>Add News Item</button>"
+                    //     // Print HTML news to DOM
+                    //     printToDom(newsItemHTML, "#newsListSection")
+                    // })
 
         // Add event listener on #news (bubbles!!)
         document.querySelector("#news").addEventListener("click", (event) => {
@@ -36,3 +48,37 @@ const createNews = () => {
 
 
 export default createNews
+
+
+
+
+
+
+// // Check IF userId on news objects matches active user OR active user's friends
+// let activeUserId = parseInt(document.querySelector("#userId").value)
+// let idsToFind = []
+
+// idsToFind.push(activeUserId)
+
+// let userFriendships = 
+
+
+
+// userArray.forEach (user => {
+//     if (activeUserId === user.id) {
+//         let userName = user.userName
+//         let newsArray = user.news
+//         // Turn each matching news object into HTML
+//         newsArray.forEach(newsObject => {
+//             let newsItemHTML = newsHTML(newsObject, userName) + "<button id='addNews'>Add News Item</button>"
+//             // Print HTML news to DOM
+//             printToDom(newsItemHTML, "#newsListSection")
+//         })
+//     }
+// })
+
+
+
+
+
+// })

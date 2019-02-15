@@ -8,6 +8,8 @@ const newsForm = () => {
     <input type="text" id="newsDate"></input>
     <label>Synopsis: </label>
     <input type="text" id="newsSynopsis"></input>
+    <label>URL: </label>
+    <input type="text" id="newsURL"></input>
     <button id="submitNews">Submit</button>
     </section>
     `
