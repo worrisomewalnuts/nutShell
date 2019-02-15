@@ -22,7 +22,7 @@ const createAddEventHtml=()=>{
     <input type="text" id="eventLocationInput"></input>
     <label>Event Date: </label>
     <input type="text" id="eventDateInput"></input>
-    <button id="submitEvent">submit</button>
+    <button id="submitEvent" value="0">submit</button>
     </section>
     `
 }
