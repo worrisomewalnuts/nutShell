@@ -12,7 +12,9 @@ const createEvents = () => {
 <section id="eventsContainer">
 `
     //todo we will need to make sure we are using our hidden field user id here
-    API.GET("events?userId=1").then(parsedEvent => {
+    let currentUserId = document.querySelector("#userId").value
+
+    API.GET(`events?userId=${currentUserId}`).then(parsedEvent => {
         parsedEvent.forEach(event => {
             html += eventHtml(event)
         })
