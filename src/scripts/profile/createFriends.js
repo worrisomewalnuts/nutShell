@@ -3,6 +3,9 @@ import friendHTML from "./friendHTML"
 import searchUsers from "./searchUsers";
 
 function createFriends() {
+    let oldElement = document.querySelector("#friends")
+    let newElement = oldElement.cloneNode(true)
+    oldElement.parentNode.replaceChild(newElement, oldElement);
     let userId = document.querySelector("#userId").value
     let friendArray = []
     let userArray = []
@@ -36,9 +39,8 @@ function createFriends() {
                     let friendId = parseInt(event.target.id.split("--")[1])
                     return API.GET("friendships")
                         .then((parsedFriendData) => {
-                            let friendshipId = parsedFriendData.filter((friendship) => {
-                                friendship.userId === parseInt(userId) && friendship.friendId === friendId
-                            }).[0].id
+                            let friendshipId = parsedFriendData.filter((friendship) => (friendship.userId === parseInt(userId) && friendship.friendId === friendId)
+                            )[0].id
                             return friendshipId
                         })
                         .then((friendshipId) => API.DELETE(`friendships/${friendshipId}`))

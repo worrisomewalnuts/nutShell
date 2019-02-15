@@ -10,6 +10,9 @@ function friendHTML(friendList) {
     </fieldset>
     <h1 id='FriendList'>Friends</h1>
     `
+    friendList = friendList.sort((a, b) => {
+        return a[0].userName.localeCompare(b[0].userName);
+    })
     friendList.map((friendObj) => {
         let currentHTML = `
         <section id="friend--${friendObj[0].id}"
@@ -18,7 +21,7 @@ function friendHTML(friendList) {
         `
         return friendHTML += currentHTML
     })
-    printToDom(friendHTML,"#friends")
+    printToDom(friendHTML, "#friends")
     return
 }
 

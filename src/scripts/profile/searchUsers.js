@@ -26,7 +26,7 @@ function searchUsers(input) {
             return notFriends
         })
         .then((notFriends) => {
-            return notFriendsThatMatchSearch = notFriends.filter(user => user.userName.includes(input))
+            return notFriendsThatMatchSearch = notFriends.filter(user => user.userName.toLowerCase().includes(input.toLowerCase()))
         })
         .then((notFriendsThatMatchSearch)=> {
             let userSearchResultsHTML = `
@@ -52,7 +52,7 @@ function searchUsers(input) {
                     .then(() => {
                         createFriends()
                     })
-                } 
+                }
             })
         })
 
