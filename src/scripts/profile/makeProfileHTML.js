@@ -19,6 +19,9 @@ const makeProfileHTML = (userId) => {
         </article>`
 
     printToDOM(html, ".output")
+    let bigButton = document.querySelector("#bigButtonSection")
+    bigButton.classList.toggle("hidden")
+    bigButton.classList.toggle("visible")
     populateProfile();
 }
 export default makeProfileHTML
