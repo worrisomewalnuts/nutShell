@@ -2,6 +2,7 @@ import createEvents from "./createEvent"
 import createFriends from "./createFriends"
 import createTasks from "./createTasks";
 import bigButton from "../utilities/bigButton"
+import createNews from "./createNews"
 
 const populateProfile = () => {
     createFriends();
