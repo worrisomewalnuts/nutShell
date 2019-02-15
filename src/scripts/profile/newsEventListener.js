@@ -10,7 +10,21 @@ const newsEventListener = () => {
             printToDom(newsFormHTML, "#newsFormSection")
 
         } else if (event.target.id === "submitNews") {              // SUBMIT button
+            let news = document.querySelector("#newsTitle").value
+            let date = document.querySelector("#newsDate").value
+            let newsSynopsis = document.querySelector("#newsSynopsis").value
+            let newsURL = document.querySelector("#newsURL").value
+            let userId = document.querySelector("#userId").value
 
+            let newNewsObject = {
+                news: news,
+                date: date,
+                newsSynopsis: newsSynopsis,
+                newsURL: newsURL,
+                userId: userId
+            }
+
+            API.POST("news", newNewsObject)
 
         } else if (event.target.id.startsWith("deleteNews")) {       // DELETE button
             // Find ID of news item to remove
