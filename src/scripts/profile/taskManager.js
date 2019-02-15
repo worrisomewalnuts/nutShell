@@ -13,7 +13,6 @@ const taskManager = {
         )
     },
     complete: (id) => {
-        console.log(id)
     }
 }
 
