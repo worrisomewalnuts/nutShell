@@ -33,12 +33,14 @@ const makeProfileHTML = (userId) => {
     if (bigButton.classList.contains("inChat")) {
         bigButton.classList.toggle("inChat")
         bigButton.classList.toggle("inProfile")
+        document.querySelector("#bigButton").textContent = "CHAT"
     }
     if (bigButton.classList.contains("hidden")) {
         bigButton.classList.toggle("hidden")
         bigButton.classList.toggle("visible")
         bigButton.classList.toggle("login")
         bigButton.classList.toggle("inProfile")
+        document.querySelector("#bigButton").textContent = "CHAT"
     }
     //EL on logout link
     logout()
