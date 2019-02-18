@@ -43,6 +43,7 @@ const createNews = () => {
                         printToDom(newsToPrint, "#newsListSection")
 
                 }).then(() => {
+                    // Add class of friendItem to news not posted by active user
                     let activeUser = parseInt(document.querySelector("#userId").value)
                     let newsItems = document.querySelectorAll(".newsItem")
                     newsItems.forEach(childEl => {
