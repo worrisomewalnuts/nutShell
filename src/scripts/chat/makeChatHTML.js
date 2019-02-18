@@ -1,7 +1,7 @@
 import printToDOM from "../utilities/printToDOM"
 import populateChat from "./populateChat"
 const makeChatHTML = (userId) => {
-    const html = ` <article>
+    const html = ` <article id="chatArticle">
             <img></img>
             <input id = "userId" type = "Hidden" value = ${userId}>
             <section id="postedChatMessages"></section>

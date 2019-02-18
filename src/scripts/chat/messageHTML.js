@@ -1,5 +1,6 @@
 import printToDom from "../utilities/printToDOM"
 import API from "../utilities/apiManager";
+import populateChat from "./populateChat";
 
 function messageHTML(parsedMessages) {
     let messageHTML = ""
@@ -19,14 +20,15 @@ function messageHTML(parsedMessages) {
             return messagesWithFriendNames
         })
         .then((messagesWithFriendNames) => {
+            let id = parseInt(document.querySelector("#userId"))
             messagesWithFriendNames.forEach((message) => {
-                if (currentUserId === message.userId[0].id) {
-                    messageHTML +=`
+                if(id === message.userId[0].id) {
+                    messageHTML += `
                     <section id="message--${message.id}">
-                        <h3 id="messageHeader--${message.id}">You posted at ${message.messageDateTime}</h3>
+                        <h3 id="messageHeader--${message.id}">You Posted at ${message.messageDateTime}</h3>
                         <div id="messageText--${message.id}">${message.messageText}</div>
-                        <button id="edit--${message.id}">Edit Post</button>
-                        <button id="delete--${message.id}">Delete Post</button>
+                        <button id="edit--${message.id}"></button>
+                        <button id="delete--${message.id}"></button>
                     </section>
                     `
                 } else {
@@ -39,6 +41,26 @@ function messageHTML(parsedMessages) {
                 }
             })
             printToDom(messageHTML, "#postedChatMessages")
+        })
+        .then(() => {
+            document.querySelector("#chatArticle").addEventListener("click", () => {
+                if (event.target.id === "submitMessage") {
+                    let messageObj = {}
+                    messageObj.userId = parseInt(document.querySelector("#userId").value)
+                    messageObj.messageText = document.querySelector("#newMessageText").value
+                    messageObj.messageDateTime = Date().split(" ").splice(0, 5).join(" ")
+                    return API.POST("chatMessages", messageObj)
+                    .then(()=> populateChat())
+                } else if (event.target.id.startsWith("edit--")) {
+                    let id = parseInt(event.target.id.split("--")[1])
+                    console.log(`IM GOING TO EDIT ${id}`)
+
+                } else if (event.target.id.startsWith("delete--")) {
+                    let id = parseInt(event.target.id.split("--")[1])
+                    console.log(`IM GOING TO DELETE ${id}`)
+
+                }
+            })
         })
 }
 
