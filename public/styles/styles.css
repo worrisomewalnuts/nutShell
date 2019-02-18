@@ -1,3 +1,13 @@
 .taskName {
     margin-left: 30px;
 }
+
+.friendEvent{
+    font-style: italic;
+    background-color: cornsilk;
+}
+
+.oldestEvent{
+    font-weight: bold;
+    background-color: lightblue;
+}
