@@ -19,6 +19,7 @@ function friendHTML(friendList) {
         <section id="friend--${friendObj[0].id}"
         <div id="#${friendObj[0].id}">${friendObj[0].userName}</div>
         <button id="delete--${friendObj[0].id}">Unfollow</button>
+        <button id="message--${friendObj[0].id}">Message</button>
         `
         return friendHTML += currentHTML
     })
