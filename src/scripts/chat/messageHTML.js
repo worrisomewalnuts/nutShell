@@ -19,7 +19,7 @@ function messageHTML(parsedMessages) {
             return messagesWithFriendNames
         })
         .then((messagesWithFriendNames) => {
-            let id = parseInt(document.querySelector("#userId"))
+            let id = parseInt(document.querySelector("#userId")).value
             messagesWithFriendNames.forEach((message) => {
                 if(id === message.userId[0].id) {
                     messageHTML += `
@@ -57,7 +57,6 @@ function messageHTML(parsedMessages) {
                 } else if (event.target.id.startsWith("delete--")) {
                     let id = parseInt(event.target.id.split("--")[1])
                     console.log(`IM GOING TO DELETE ${id}`)
-
                 }
             })
         })
