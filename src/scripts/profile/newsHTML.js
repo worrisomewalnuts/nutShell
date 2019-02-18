@@ -1,6 +1,6 @@
 const newsHTML = (newsObject) => {
     return `
-        <article id="newsItem--${newsObject.id}" class="newsItem user--${newsObject.user.id}">
+        <article id="newsItem--${newsObject.id}" class="newsItem friendItem user--${newsObject.user.id}">
             <h3 id="newsTitle--${newsObject.id}">${newsObject.news}</h3>
             <div>${newsObject.date}</div>
             <div id="newsSynopsis--${newsObject.id}">${newsObject.newsSynopsis}</div>

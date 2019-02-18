@@ -38,7 +38,7 @@ const createEvents = () => {
 
                 //check if this event is a friend. if not check if it is the users closest event.
                 if (event.userId != currentUserId) {
-                    eventClass = "friendEvent"
+                    eventClass = "friendItem"
                 } else if (oldestEventFlag === true) {
                     eventClass += " oldestEvent"
                     oldestEventFlag = false

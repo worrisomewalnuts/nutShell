@@ -42,7 +42,16 @@ const createNews = () => {
                         // Print HTML news to DOM
                         printToDom(newsToPrint, "#newsListSection")
 
+                }).then(() => {
+                    // Add class of friendItem to news not posted by active user
+                    let activeUser = parseInt(document.querySelector("#userId").value)
+                    let newsItems = document.querySelectorAll(".newsItem")
+                    newsItems.forEach(childEl => {
+                        if (childEl.classList.contains(`user--${activeUser}`)) {
+                            childEl.classList.remove("friendItem")
+                        }
                     })
+                })
             })
             // Add event listener on #news (bubbles!!)
             let oldElement = document.querySelector("#news")
