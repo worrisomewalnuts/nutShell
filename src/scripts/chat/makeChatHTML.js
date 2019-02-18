@@ -4,7 +4,6 @@ const makeChatHTML = (userId) => {
     const html = ` <article>
             <img></img>
             <input id = "userId" type = "Hidden" value = ${userId}>
-            <div>THIS IS THE CHAT AND USER ${userId} IS LOGGED IN</div>
             <section id="postedChatMessages"></section>
             <section id="newMessageForm">
                 <textarea id="newMessageText">Enter Message Here (max 160 characters)</textarea>​

@@ -1,4 +1,4 @@
-import printToDom from "../src/scripts/utilities/printToDOM";
+import printToDom from "../utilities/printToDOM";
 
 // creates form for task
 const taskForm = () => {

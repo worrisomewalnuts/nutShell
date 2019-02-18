@@ -7,13 +7,13 @@ import createNews from "./createNews"
 const populateProfile = () => {
     createFriends();
     createEvents();
-     createNews();
-     createTasks();
+    createNews();
+    createTasks();
 
-     let oldElement = document.querySelector("#bigButton")
-     let newElement = oldElement.cloneNode(true)
-     oldElement.parentNode.replaceChild(newElement, oldElement);
-     document.querySelector("#bigButton").addEventListener("click", bigButton)
+    let oldElement = document.querySelector("#bigButton")
+    let newElement = oldElement.cloneNode(true)
+    oldElement.parentNode.replaceChild(newElement, oldElement);
+    document.querySelector("#bigButton").addEventListener("click", bigButton)
 }
 
 export default populateProfile
