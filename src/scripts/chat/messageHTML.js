@@ -22,7 +22,7 @@ function messageHTML(parsedMessages) {
         .then((messagesWithFriendNames) => {
             let id = parseInt(document.querySelector("#userId").value)
             messagesWithFriendNames.forEach((message) => {
-                if(id === message.userId[0].id) {
+                if (id === message.userId[0].id) {
                     messageHTML += `
                     <section id="message--${message.id}">
                         <h3 id="messageHeader--${message.id}">You Posted at ${message.messageDateTime}</h3>
@@ -50,14 +50,26 @@ function messageHTML(parsedMessages) {
                     messageObj.messageText = document.querySelector("#newMessageText").value
                     messageObj.messageDateTime = Date().split(" ").splice(0, 5).join(" ")
                     return API.POST("chatMessages", messageObj)
-                    .then(()=> populateChat())
+                        .then(() => populateChat())
                 } else if (event.target.id.startsWith("edit--")) {
                     let id = parseInt(event.target.id.split("--")[1])
-                    console.log(`IM GOING TO EDIT ${id}`)
+                    let fetchString = `chatMessages/${id}`
+                    return API.GET(fetchString)
+                        .then((parsedMessage) => {
+                            document.querySelector("#newMessageText").innerText = parsedmessage.messageTExt
+
+                        })
+
+
+
+
 
                 } else if (event.target.id.startsWith("delete--")) {
                     let id = parseInt(event.target.id.split("--")[1])
-                    console.log(`IM GOING TO DELETE ${id}`)
+
+
+
+
                 }
             })
         })

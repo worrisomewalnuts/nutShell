@@ -6,8 +6,7 @@ const makeChatHTML = (userId) => {
             <input id = "userId" type = "Hidden" value = ${userId}>
             <section id="postedChatMessages"></section>
             <section id="newMessageForm">
-                <textarea id="newMessageText">Enter Message Here (max 160 characters)</textarea>​
-                <span id="remainingChar"></span>
+                <textarea id="newMessageText" rows="10" cols="30">Enter Message Here</textarea>​
                 <button id="submitMessage">Submit Message</button>
             </section>
         </article>`
