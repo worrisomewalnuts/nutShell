@@ -3,11 +3,12 @@ import populateChat from "./populateChat"
 const makeChatHTML = (userId) => {
     const html = ` <article id="chatArticle">
             <img></img>
-            <input id = "userId" type = "Hidden" value = ${userId}>
+            <input id="userId" type="Hidden" value=${userId}>
             <section id="postedChatMessages"></section>
             <section id="newMessageForm">
-                <textarea id="newMessageText">Enter Message Here (max 160 characters)</textarea>​
-                <span id="remainingChar"></span>
+                <input id="messageToEditId" type="Hidden">
+                <input id="messageToEditDateTime" type="Hidden">
+                <textarea id="newMessageText" rows="10" cols="30">Enter Message Here</textarea>​
                 <button id="submitMessage">Submit Message</button>
             </section>
         </article>`
