@@ -5,6 +5,7 @@ const logout = () => {
     () => {
         //clear sessionStorage
         sessionStorage.removeItem("userID")
+        sessionStorage.clear()
         checkSessionstorage()
     })
 }
