@@ -1,4 +1,5 @@
-import makeProfileHTML from "./profile/makeProfileHTML"
-import makeLoginHtml from "./login/makeLoginHTML"
-makeLoginHtml()
+import checkSessionstorage from "./profile/checkSessionStorage";
+import makeProfileHTML from "./profile/makeProfileHTML";
+
+ checkSessionstorage()
 
