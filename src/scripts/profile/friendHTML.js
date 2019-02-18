@@ -1,5 +1,6 @@
 import printToDom from "../utilities/printToDOM";
 
+// creates a list of users that the logged in user follows, and provides buttons to unfollow/unfriend any "friended" users
 function friendHTML(friendList) {
     let friendHTML = `
     <fieldset id="searchUsers">

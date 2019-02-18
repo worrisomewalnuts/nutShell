@@ -61,3 +61,12 @@ text-align: right;
 font-size: 25px;
 font-style: italic;
 }
+.friendItem{
+    font-style: italic;
+    background-color: cornsilk;
+}
+
+.oldestEvent{
+    font-weight: bold;
+    background-color: lightblue;
+}
