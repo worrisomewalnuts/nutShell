@@ -4,9 +4,11 @@ import populateChat from "./populateChat";
 import makeChatHTML from "./makeChatHTML"
 
 function messageHTML(parsedMessages) {
+    let oldElement = document.querySelector("#chatArticle")
+    let newElement = oldElement.cloneNode(true)
+    oldElement.parentNode.replaceChild(newElement, oldElement);
     let messageHTML = ""
     let userArray = []
-    let currentUserId = parseInt(document.querySelector("#userId").value)
     return API.GET("users")
         .then((parsedUsers) => userArray = parsedUsers)
         .then((userArray) => {
@@ -80,9 +82,10 @@ function messageHTML(parsedMessages) {
                         return
                     })
                 }
-
                 else if (event.target.id.startsWith("delete--")) {
                     let id = parseInt(event.target.id.split("--")[1])
+                    return API.DELETE(`chatMessages/${id}`)
+                    .then(() => populateChat())
 
 
 
