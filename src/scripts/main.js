@@ -1,5 +1,5 @@
 import checkSessionstorage from "./profile/checkSessionStorage";
 import makeProfileHTML from "./profile/makeProfileHTML";
 
-// checkSessionstorage()
-makeProfileHTML(1)
+ checkSessionstorage()
+//makeProfileHTML(1)

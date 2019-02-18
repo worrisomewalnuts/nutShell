@@ -8,22 +8,22 @@ const makeProfileHTML = (userId) => {
     const html = `
     <article>
     <div id = "header">
-            <img></img>
+            <img id = "image"></img>
             <input id = "userId" type = "Hidden" value = ${userId}>
             <section id = "title"> NutShell
             </section>
             <a href="" id = "logout"> LOGOUT </a>
-</div>
+    </div>
+    <div id="navBar">
 
-            <h1>Friends</h1>
+    </div>
+    <div id = "bigContainer">
             <section id = "friends">
             </section>
-        <div id="navBar">
+        <div id = "tabContainer">
 
         </div>
-<div id = "tabContainer">
-
-</div>
+    </div>
             <section id = "chats">
             </section>
         </article>`
