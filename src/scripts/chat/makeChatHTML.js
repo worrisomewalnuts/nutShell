@@ -19,6 +19,7 @@ const makeChatHTML = (userId) => {
     let bigButton = document.querySelector("#bigButtonSection")
     bigButton.classList.toggle("inProfile")
     bigButton.classList.toggle("inChat")
+    document.querySelector("#bigButton").textContent = "PROFILE"
 
     populateChat();
 }
