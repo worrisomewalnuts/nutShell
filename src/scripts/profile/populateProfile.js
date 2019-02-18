@@ -5,10 +5,11 @@ import bigButton from "../utilities/bigButton"
 import createNews from "./createNews"
 
 const populateProfile = () => {
+    
     createFriends();
-    createEvents();
-    createNews();
-    createTasks();
+    // createEvents();
+    // createNews();
+    // createTasks();
 
     let oldElement = document.querySelector("#bigButton")
     let newElement = oldElement.cloneNode(true)
