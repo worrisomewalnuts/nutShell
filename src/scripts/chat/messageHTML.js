@@ -4,6 +4,7 @@ import API from "../utilities/apiManager";
 function messageHTML(parsedMessages) {
     let messageHTML = ""
     let userArray = []
+    let currentUserId = parseInt(document.querySelector("#userId").value)
     return API.GET("users")
         .then((parsedUsers) => userArray = parsedUsers)
         .then((userArray) => {
@@ -19,13 +20,23 @@ function messageHTML(parsedMessages) {
         })
         .then((messagesWithFriendNames) => {
             messagesWithFriendNames.forEach((message) => {
-                let dateTime = Date(message.dateTime).split(" ").splice(0, 5).join(" ")
-                messageHTML += `
-                <section id="message--${message.id}">
-                    <h3 id="messageHeader--${message.id}">Message from ${message.userId[0].userName} at ${dateTime}</h3>
-                    <div id="messageText--${message.id}">${message.messageText}</div>
-                </section>
-                `
+                if (currentUserId === message.userId[0].id) {
+                    messageHTML +=`
+                    <section id="message--${message.id}">
+                        <h3 id="messageHeader--${message.id}">You posted at ${message.messageDateTime}</h3>
+                        <div id="messageText--${message.id}">${message.messageText}</div>
+                        <button id="edit--${message.id}">Edit Post</button>
+                        <button id="delete--${message.id}">Delete Post</button>
+                    </section>
+                    `
+                } else {
+                    messageHTML += `
+                    <section id="message--${message.id}">
+                        <h3 id="messageHeader--${message.id}">Message from ${message.userId[0].userName} at ${message.messageDateTime}</h3>
+                        <div id="messageText--${message.id}">${message.messageText}</div>
+                    </section>
+                    `
+                }
             })
             printToDom(messageHTML, "#postedChatMessages")
         })
