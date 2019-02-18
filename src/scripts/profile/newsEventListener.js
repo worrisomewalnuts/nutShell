@@ -24,7 +24,8 @@ const newsEventListener = () => {
                 news: news,
                 newsSynopsis: newsSynopsis,
                 newsURL: newsURL,
-                userId: parseInt(userId)
+                userId: parseInt(userId),
+                date: Date().split(" ").splice(0,4).join(" ")
             }
 
             API.POST("news", newNewsObject)
