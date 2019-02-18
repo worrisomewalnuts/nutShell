@@ -26,15 +26,22 @@ const createNews = () => {
             let newsSearchString = `news?_expand=user&userId=${idsToFind.join("&userId=")}`
             API.GET(newsSearchString)
                 .then(newsArray => {
+                    // Sort news by date
+                    let sortedNewsArray = newsArray.sort((a, b) => {
+                        return new Date(b.date) - new Date(a.date)
+                    })
+                    return sortedNewsArray
+                }).then(sortedNewsArray => {
                     // Create HTML representation of news items
                     let newsToPrint = ""
-                    newsArray.forEach(newsObject => {
+                    sortedNewsArray.forEach(newsObject => {
                         let newsItemHTML = newsHTML(newsObject)
                         newsToPrint += `${newsItemHTML}`
                     })
                     newsToPrint += "<button id='addNews'>Add News Item</button>"
                         // Print HTML news to DOM
                         printToDom(newsToPrint, "#newsListSection")
+
                     })
             })
             // Add event listener on #news (bubbles!!)
