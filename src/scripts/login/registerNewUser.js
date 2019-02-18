@@ -23,6 +23,8 @@ const registerNewUser = () => {
        let newUser = createNewUser()
 
     API.POST("users", newUser).then(newUser=>{
+        //adding key(userID) to storageSession
+        sessionStorage.setItem("userID", `${newUser.id}`)
         makeProfileHTML(newUser.id)
     })
 

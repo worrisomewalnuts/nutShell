@@ -1,6 +1,7 @@
 import printToDom from "../utilities/printToDOM"
 import API from "../utilities/apiManager";
 import populateChat from "./populateChat";
+import makeChatHTML from "./makeChatHTML"
 
 function messageHTML(parsedMessages) {
     let messageHTML = ""
@@ -56,15 +57,31 @@ function messageHTML(parsedMessages) {
                     let fetchString = `chatMessages/${id}`
                     return API.GET(fetchString)
                         .then((parsedMessage) => {
-                            document.querySelector("#newMessageText").innerText = parsedmessage.messageTExt
-
+                            document.querySelector("#newMessageText").value = parsedMessage.messageText
+                            document.querySelector("#submitMessage").id = "updateMessage"
+                            document.querySelector("#updateMessage").innerText = "Update Message"
+                            document.querySelector("#messageToEditId").value = parsedMessage.id
+                            document.querySelector("#messageToEditDateTime").value = parsedMessage.messageDateTime
                         })
+                } else if (event.target.id === "updateMessage") {
+                    let messageObj = {}
+                    messageObj.id = parseInt(document.querySelector("#messageToEditId").value)
+                    document.querySelector("#messageToEditId").value = ""
+                    messageObj.messageDateTime = document.querySelector("#messageToEditDateTime").value
+                    document.querySelector("#messageToEditDateTime").value - ""
+                    messageObj.messageText = document.querySelector("#newMessageText").value
+                    messageObj.userId = parseInt(document.querySelector("#userId").value)
+                    return API.EDIT(`chatMessages/${messageObj.id}`, messageObj)
+                    .then(()=> populateChat())
+                    .then(()=> {
+                        document.querySelector("#updateMessage").id = "submitMessage"
+                        document.querySelector("#submitMessage").innerText = "Submit Message"
+                        document.querySelector("#newMessageText").value = "Enter Message Here"
+                        return
+                    })
+                }
 
-
-
-
-
-                } else if (event.target.id.startsWith("delete--")) {
+                else if (event.target.id.startsWith("delete--")) {
                     let id = parseInt(event.target.id.split("--")[1])
 
 
