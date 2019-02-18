@@ -9,7 +9,7 @@ const makeChatHTML = (userId) => {
             <section id="newMessageForm">
                 <input id="messageToEditId" type="Hidden">
                 <input id="messageToEditDateTime" type="Hidden">
-                <textarea id="newMessageText" rows="10" cols="30">Enter Message Here</textarea>​
+                <textarea id="newMessageText" rows="10" cols="30" placeholder="Enter Message Here"></textarea>​
                 <button id="submitMessage">Submit Message</button>
             </section>
         </article>`
@@ -19,7 +19,7 @@ const makeChatHTML = (userId) => {
     let bigButton = document.querySelector("#bigButtonSection")
     bigButton.classList.toggle("inProfile")
     bigButton.classList.toggle("inChat")
-    
+
     populateChat();
 }
 export default makeChatHTML

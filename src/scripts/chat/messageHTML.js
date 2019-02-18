@@ -60,7 +60,10 @@ function messageHTML(parsedMessages) {
                     messageObj.messageDateTime = Date().split(" ").splice(0, 5).join(" ")
                     return API.POST("chatMessages", messageObj)
                         .then(() => populateChat())
-                // takes the message that had it's edit button clicked on and placed the message contentinto the text area. Message Id and dateTime stamp are stored in hidden values. Submit button is converted to an Update Button
+                        .then(() => {
+                            document.querySelector("#newMessageText").value = ""
+                        })
+                    // takes the message that had it's edit button clicked on and placed the message contentinto the text area. Message Id and dateTime stamp are stored in hidden values. Submit button is converted to an Update Button
                 } else if (event.target.id.startsWith("edit--")) {
                     let id = parseInt(event.target.id.split("--")[1])
                     let fetchString = `chatMessages/${id}`
@@ -72,7 +75,7 @@ function messageHTML(parsedMessages) {
                             document.querySelector("#messageToEditId").value = parsedMessage.id
                             document.querySelector("#messageToEditDateTime").value = parsedMessage.messageDateTime
                         })
-                // Update button replaces the message in the database with the current information. Transforms update button back to submit button and resets the text area.
+                    // Update button replaces the message in the database with the current information. Transforms update button back to submit button and resets the text area.
                 } else if (event.target.id === "updateMessage") {
                     let messageObj = {}
                     messageObj.id = parseInt(document.querySelector("#messageToEditId").value)
@@ -82,19 +85,22 @@ function messageHTML(parsedMessages) {
                     messageObj.messageText = document.querySelector("#newMessageText").value
                     messageObj.userId = parseInt(document.querySelector("#userId").value)
                     return API.EDIT(`chatMessages/${messageObj.id}`, messageObj)
-                    .then(()=> populateChat())
-                    .then(()=> {
-                        document.querySelector("#updateMessage").id = "submitMessage"
-                        document.querySelector("#submitMessage").innerText = "Submit Message"
-                        document.querySelector("#newMessageText").value = "Enter Message Here"
-                        return
-                    })
+                        .then(() => populateChat())
+                        .then(() => {
+                            document.querySelector("#updateMessage").id = "submitMessage"
+                            document.querySelector("#submitMessage").innerText = "Submit Message"
+                            document.querySelector("#newMessageText").value = ""
+                            return
+                        })
                 }
                 // deletes the selected message from the database.
                 else if (event.target.id.startsWith("delete--")) {
                     let id = parseInt(event.target.id.split("--")[1])
                     return API.DELETE(`chatMessages/${id}`)
-                    .then(() => populateChat())
+                        .then(() => populateChat())
+                        .then(() => {
+                            document.querySelector("#newMessageText").value = ""
+                        })
                 }
             })
         })
