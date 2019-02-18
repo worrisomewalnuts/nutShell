@@ -1,6 +1,7 @@
 import printToDOM from "../utilities/printToDOM"
 import populateChat from "./populateChat"
 const makeChatHTML = (userId) => {
+    // creates base chat HTML with two hidden inputs in the new message form to store message ID and text content for messages being edited
     const html = ` <article id="chatArticle">
             <img></img>
             <input id="userId" type="Hidden" value=${userId}>
@@ -14,9 +15,11 @@ const makeChatHTML = (userId) => {
         </article>`
 
     printToDOM(html, ".output")
+    // Sets bigButton so that it will take the user back to the profile when clicked
     let bigButton = document.querySelector("#bigButtonSection")
     bigButton.classList.toggle("inProfile")
     bigButton.classList.toggle("inChat")
+    
     populateChat();
 }
 export default makeChatHTML

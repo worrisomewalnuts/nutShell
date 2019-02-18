@@ -1,13 +1,15 @@
 import printToDom from "../utilities/printToDOM"
 import API from "../utilities/apiManager";
 import populateChat from "./populateChat";
-import makeChatHTML from "./makeChatHTML"
 
 function messageHTML(parsedMessages) {
+    // clones the chat article node to prevent button event listeners from firing more than one time
     let oldElement = document.querySelector("#chatArticle")
     let newElement = oldElement.cloneNode(true)
     oldElement.parentNode.replaceChild(newElement, oldElement);
+    // creates empty HTML String
     let messageHTML = ""
+    // takes the messages and users arrays and combines them so the user's username can be accessed in the display instead of their user id.
     let userArray = []
     return API.GET("users")
         .then((parsedUsers) => userArray = parsedUsers)
@@ -22,6 +24,7 @@ function messageHTML(parsedMessages) {
             })
             return messagesWithFriendNames
         })
+        // creates an HTML block for each message in the database. if the message is created by the logged in user, then edit and delete buttons are provided for each of their messages.
         .then((messagesWithFriendNames) => {
             let id = parseInt(document.querySelector("#userId").value)
             messagesWithFriendNames.forEach((message) => {
@@ -43,10 +46,13 @@ function messageHTML(parsedMessages) {
                     `
                 }
             })
+            // prints all of the message HTML blocks
             printToDom(messageHTML, "#postedChatMessages")
         })
+        // adds event listeners to all buttons
         .then(() => {
             document.querySelector("#chatArticle").addEventListener("click", () => {
+                // lets user submit a new message to the database with the content in the text area. Afterwards it refreshes the chat display to show the new message.
                 if (event.target.id === "submitMessage") {
                     let messageObj = {}
                     messageObj.userId = parseInt(document.querySelector("#userId").value)
@@ -54,6 +60,7 @@ function messageHTML(parsedMessages) {
                     messageObj.messageDateTime = Date().split(" ").splice(0, 5).join(" ")
                     return API.POST("chatMessages", messageObj)
                         .then(() => populateChat())
+                // takes the message that had it's edit button clicked on and placed the message contentinto the text area. Message Id and dateTime stamp are stored in hidden values. Submit button is converted to an Update Button
                 } else if (event.target.id.startsWith("edit--")) {
                     let id = parseInt(event.target.id.split("--")[1])
                     let fetchString = `chatMessages/${id}`
@@ -65,6 +72,7 @@ function messageHTML(parsedMessages) {
                             document.querySelector("#messageToEditId").value = parsedMessage.id
                             document.querySelector("#messageToEditDateTime").value = parsedMessage.messageDateTime
                         })
+                // Update button replaces the message in the database with the current information. Transforms update button back to submit button and resets the text area.
                 } else if (event.target.id === "updateMessage") {
                     let messageObj = {}
                     messageObj.id = parseInt(document.querySelector("#messageToEditId").value)
@@ -82,14 +90,11 @@ function messageHTML(parsedMessages) {
                         return
                     })
                 }
+                // deletes the selected message from the database.
                 else if (event.target.id.startsWith("delete--")) {
                     let id = parseInt(event.target.id.split("--")[1])
                     return API.DELETE(`chatMessages/${id}`)
                     .then(() => populateChat())
-
-
-
-
                 }
             })
         })
