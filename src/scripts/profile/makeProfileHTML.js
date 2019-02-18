@@ -3,7 +3,7 @@ import populateProfile from "./populateProfile"
 const makeProfileHTML = (userId) => {
     const html = ` <article>
             <img></img>
-            <input id = "userId" type = "Hidden" value = 1>
+            <input id = "userId" type = "Hidden" value = ${userId}>
             <section id = "title"> NutShell
             </section>
 
