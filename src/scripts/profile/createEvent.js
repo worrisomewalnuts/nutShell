@@ -14,6 +14,12 @@ const createEvents = () => {
     //todo we will need to make sure we are using our hidden field user id here
     let currentUserId = document.querySelector("#userId").value
 
+
+
+
+
+    // grab friends ids for bring up there events. store in array.
+    //we can then run a for each with our get
     API.GET(`events?userId=${currentUserId}`).then(parsedEvent => {
         parsedEvent.forEach(event => {
             html += eventHtml(event)
@@ -23,8 +29,9 @@ const createEvents = () => {
         `
         printToDom(html, "#events")
 
-        document.querySelector("#submitEvent").addEventListener("click", function () {
 
+        //event for submit/edit button. checks whats its toggled to
+        document.querySelector("#submitEvent").addEventListener("click", function () {
 
             if (document.querySelector("#submitEvent").textContent === "Edit") {
                 const eventIdToEdit = document.querySelector("#submitEvent").value
@@ -38,6 +45,7 @@ const createEvents = () => {
             }
         })
 
+        //event listener for single event edit and delete button
         document.querySelector("#eventsContainer").addEventListener("click", function () {
 
             let action = event.target.id.split("--")[0]
@@ -50,10 +58,6 @@ const createEvents = () => {
                     document.querySelector("#eventDateInput").value = event[0].eventDate
                     document.querySelector("#submitEvent").textContent = "Edit"
                     document.querySelector("#submitEvent").value = event[0].id
-
-                    // API.POST("events", createNewEvent()).then(() => {
-                    //     createEvents()
-                    // })
                 })
 
                 document.querySelector("#eventNameInput").value = "fofo"
