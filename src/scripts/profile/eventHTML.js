@@ -11,7 +11,8 @@ const eventHtml = (event, eventClass) => {
         <p>Event Location: ${event.eventLocation}</p>
         <p>Event Date: ${event.eventDate}</p>
         `
-    if (eventClass != "friendEvent"){
+
+    if (eventClass != "friendItem"){
 
         html +=
             `
