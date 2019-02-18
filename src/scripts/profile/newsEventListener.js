@@ -12,16 +12,14 @@ const newsEventListener = () => {
             let newsFormHTML = newsForm()
             printToDom(newsFormHTML, "#newsFormSection")
 
-            // SUBMIT button
+        // SUBMIT button
         } else if (event.target.id === "submitNews") {
             let news = document.querySelector("#newsTitle").value
-            let date = document.querySelector("#newsDate").value
             let newsSynopsis = document.querySelector("#newsSynopsis").value
             let newsURL = document.querySelector("#newsURL").value
 
             let newNewsObject = {
                 news: news,
-                date: date,
                 newsSynopsis: newsSynopsis,
                 newsURL: newsURL,
                 userId: parseInt(userId)
@@ -54,12 +52,10 @@ const newsEventListener = () => {
             document.querySelector("#updateNews").addEventListener("click", () => {
                 let news = document.querySelector("#editNewsTitle").value
                 let newsSynopsis = document.querySelector("#editNewsSynopsis").value
-                let date = document.querySelector(`#newsDate--${idToEdit}`).value
                 let newsURL = document.querySelector(`#newsLink--${idToEdit}`).value
 
                 let updatedNewsObject = {
                     news: news,
-                    date: date,
                     newsSynopsis: newsSynopsis,
                     newsURL: newsURL,
                     userId: parseInt(userId)

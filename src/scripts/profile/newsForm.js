@@ -4,8 +4,6 @@ const newsForm = () => {
     <section id="newsForm">
     <label>Title: </label>
     <input type="text" id="newsTitle"></input>
-    <label>Date: </label>
-    <input type="text" id="newsDate"></input>
     <label>Synopsis: </label>
     <input type="text" id="newsSynopsis"></input>
     <label>URL: </label>

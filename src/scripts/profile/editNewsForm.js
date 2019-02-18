@@ -1,7 +1,6 @@
 const editNewsForm = (idToEdit) => {
     let title = document.querySelector(`#newsTitle--${idToEdit}`)
     let synopsis = document.querySelector(`#newsSynopsis--${idToEdit}`)
-    let url = document.querySelector(`#newsLink--${idToEdit}`)
 
     return `
     <h4>Edit News Item</h4>
