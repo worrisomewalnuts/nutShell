@@ -3,7 +3,7 @@ import userLogin from "./userLogin"
 
 const makeLoginHtml = () => {
     let html = `
-    <h1>Welcome to NutShell</h1>
+    <h1 id = "titleLogin">Welcome to NutShell</h1>
     <section id="loginPageOptions">
     <a href="javascript:;" id="login">Login</a>
     <a href="javascript:;" id="signUp">Sign-up</a>
