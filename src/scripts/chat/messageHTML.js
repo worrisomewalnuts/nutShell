@@ -20,15 +20,15 @@ function messageHTML(parsedMessages) {
             return messagesWithFriendNames
         })
         .then((messagesWithFriendNames) => {
-            let id = parseInt(document.querySelector("#userId")).value
+            let id = parseInt(document.querySelector("#userId").value)
             messagesWithFriendNames.forEach((message) => {
                 if(id === message.userId[0].id) {
                     messageHTML += `
                     <section id="message--${message.id}">
                         <h3 id="messageHeader--${message.id}">You Posted at ${message.messageDateTime}</h3>
                         <div id="messageText--${message.id}">${message.messageText}</div>
-                        <button id="edit--${message.id}"></button>
-                        <button id="delete--${message.id}"></button>
+                        <button id="edit--${message.id}">Edit Post</button>
+                        <button id="delete--${message.id}">Delete Post</button>
                     </section>
                     `
                 } else {
