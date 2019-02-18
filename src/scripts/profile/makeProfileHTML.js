@@ -1,12 +1,14 @@
 import printToDOM from "../utilities/printToDOM"
 import populateProfile from "./populateProfile"
+import logout from "./logout";
 const makeProfileHTML = (userId) => {
+
     const html = ` <article>
             <img></img>
             <input id = "userId" type = "Hidden" value = ${userId}>
             <section id = "title"> NutShell
             </section>
-
+            <a href="" id = "logout"> LOGOUT </a>
             <h1>Friends</h1>
             <section id = "friends">
             </section>
@@ -41,6 +43,8 @@ const makeProfileHTML = (userId) => {
         bigButton.classList.toggle("login")
         bigButton.classList.toggle("inProfile")
     }
+    //EL on logout link
+    logout()
     populateProfile();
 }
 export default makeProfileHTML
