@@ -17,6 +17,8 @@ const userLogin = () => {
         let  userPassword= document.querySelector("#password").value
         API.GET(`users?userName=${userNameSearchString}`).then(user => {
             if(user[0].pass === userPassword){
+                //adding key(userID) to storageSession
+                sessionStorage.setItem("userID", `${user[0].id}`)
                 makeProfileHTML(user[0].id)
             }else{
                 alert("wrong password")
