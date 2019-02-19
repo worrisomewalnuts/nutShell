@@ -2,6 +2,7 @@ import API from "../utilities/apiManager"
 import printToDom from "../utilities/printToDOM"
 import { eventHtml, createAddEventHtml } from "./eventHTML"
 import createNewEvent from "./eventManager"
+
 let html = ""
 const createEvents = () => {
     html = ""
@@ -10,9 +11,9 @@ const createEvents = () => {
 
     //make a section container for all events
     html +=
-        `
-<section id="eventsContainer">
-`
+    `
+    <section id="eventsContainer">
+    `
     //todo we will need to make sure we are using our hidden field user id here
     let currentUserId = document.querySelector("#userId").value
 
@@ -61,15 +62,18 @@ const createEvents = () => {
                         createEvents()
                     })
                 } else {
-                    API.POST("events", createNewEvent()).then(() => {
-                        createEvents()
-                    })
+                    const newEvent = createNewEvent()
+                    //passed datavalidation
+                    if (newEvent != "") {
+                        API.POST("events", newEvent).then(() => {
+                            createEvents()
+                        })
+                    }
                 }
             })
 
             //event listener for single event edit and delete button
             document.querySelector("#eventsContainer").addEventListener("click", function () {
-
 
                 let action = event.target.id.split("--")[0]
                 let actionId = event.target.id.split("--")[1]
@@ -90,10 +94,7 @@ const createEvents = () => {
                 }
             })
         });
-
     })
 }
-
-
 
 export default createEvents

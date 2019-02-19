@@ -3,6 +3,7 @@ import printToDom from "../utilities/printToDOM"
 import API from "../utilities/apiManager"
 import createNews from "./createNews"
 import editNewsForm from "./editNewsForm"
+import { isEmpty, isProfanity } from "../utilities/dataValidation"
 
 const newsEventListener = () => {
     document.querySelector("#news").addEventListener("click", (event) => {
@@ -14,24 +15,31 @@ const newsEventListener = () => {
             let newsFormHTML = newsForm()
             printToDom(newsFormHTML, "#newsFormSection")
 
-        // SUBMIT button
+            // SUBMIT button
         } else if (event.target.id === "submitNews") {
             let news = document.querySelector("#newsTitle").value
             let newsSynopsis = document.querySelector("#newsSynopsis").value
             let newsURL = document.querySelector("#newsURL").value
 
-            let newNewsObject = {
-                news: news,
-                newsSynopsis: newsSynopsis,
-                newsURL: newsURL,
-                userId: parseInt(userId),
-                date: Date().split(" ").splice(0,4).join(" ")
+            //run data validation and create new news info is passed
+            if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
+                alert("One or more fields are empty")
+            } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
+                alert("One or more fields contain profanity")
+            } else {
+                let newNewsObject = {
+                    news: news,
+                    newsSynopsis: newsSynopsis,
+                    newsURL: newsURL,
+                    userId: parseInt(userId),
+                    date: Date().split(" ").splice(0, 4).join(" ")
+                }
+
+                API.POST("news", newNewsObject)
+                    .then(createNews)
             }
 
-            API.POST("news", newNewsObject)
-                .then(createNews)
-
-        // DELETE button
+            // DELETE button
         } else if (event.target.id.startsWith("deleteNews")) {
 
             // Check that news belongs to active user
@@ -47,7 +55,7 @@ const newsEventListener = () => {
                     })
             }
 
-        // EDIT button
+            // EDIT button
         } else if (event.target.id.startsWith("editNewsButton")) {
 
             // Check that news belongs to active user

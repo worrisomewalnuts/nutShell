@@ -22,6 +22,9 @@ const registerNewUser = () => {
     document.querySelector("#registerNewUser").addEventListener("click", function () {
        let newUser = createNewUser()
 
+
+        //todo dont think i checked if a username was already taken. Probably need to do that
+
     API.POST("users", newUser).then(newUser=>{
         //adding key(userID) to storageSession
         sessionStorage.setItem("userID", `${newUser.id}`)
