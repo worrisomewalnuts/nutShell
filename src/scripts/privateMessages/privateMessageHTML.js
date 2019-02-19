@@ -1,6 +1,11 @@
 import printToDom from "../utilities/printToDOM";
+import API from "../utilities/apiManager";
+import createPrivateMessages from "./createPrivateMessages";
 
-function privateMessageHTML(messagesInThisConversation) {
+
+function privateMessageHTML(messagesInThisConversation, friendId) {
+    
+    let id = parseInt(friendId)
     let userId = parseInt(document.querySelector("#userId").value)
     let HTMLString = ""
     messagesInThisConversation.forEach(message => {
@@ -26,8 +31,20 @@ function privateMessageHTML(messagesInThisConversation) {
         <button id="submitMessage">Send Message</button>
     </section>
     `
-// PRINT TO DOM NOW!!!!!!!!!!
-    printToDom(HTMLString,"#tabContainer")
+    printToDom(HTMLString, "#tabContainer")
+    document.querySelector("#tabContainer").addEventListener("click", () => {
+        if (event.target.id === "submitMessage") {
+            let obj = {}
+            obj.recipientId = id
+            obj.senderId = userId
+            obj.messageDateTime = Date().split(" ").splice(0, 5).join(" ")
+            obj.messageText = document.querySelector("#newMessageText").value
+            return API.POST("privateMessages", obj)
+            .then(()=> {
+                createPrivateMessages(id)
+            })
+        }
+    })
 }
 
 export default privateMessageHTML

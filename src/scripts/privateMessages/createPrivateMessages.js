@@ -3,6 +3,9 @@ import privateMessageHTML from "./privateMessageHTML";
 
 
 function createPrivateMessages(id) {
+    let oldElement = document.querySelector("#tabContainer")
+    let newElement = oldElement.cloneNode(true)
+    oldElement.parentNode.replaceChild(newElement, oldElement);
     let friendId = parseInt(id)
     let userId = parseInt(document.querySelector("#userId").value)
     return API.GET("privateMessages")
@@ -13,7 +16,7 @@ function createPrivateMessages(id) {
         return messagesInThisConversation
     })
     .then((messagesInThisConversation)=> {
-        privateMessageHTML(messagesInThisConversation)
+        privateMessageHTML(messagesInThisConversation, friendId)
     })
 }
 
