@@ -4,8 +4,7 @@ const eventHtml = (event, eventClass) => {
 
     html +=
         `
-        <p>---------------------------------------------------</p>
-        <section id="section--${event.id}" class="${eventClass}">
+        <section id="section--${event.id}" class="profileCard ${eventClass}">
         <p>User: ${event.user.userName}</p>
         <p>Event: ${event.eventName}</p>
         <p>Event Location: ${event.eventLocation}</p>
