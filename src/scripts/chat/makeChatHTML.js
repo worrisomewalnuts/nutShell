@@ -4,7 +4,7 @@ const makeChatHTML = (userId) => {
     // creates base chat HTML with two hidden inputs in the new message form to store message ID and text content for messages being edited
     const html = `
     <div id = "header">
-        <section id="bigButtonSection" class="visible inChat">
+        <section id="bigButtonSection" class="inChat">
             <button id="bigButton">BIG BUTTON</button>
         </section>
         <input id = "userId" type = "Hidden" value = ${userId}>
@@ -27,8 +27,6 @@ const makeChatHTML = (userId) => {
     printToDOM(html, ".output")
     // Sets bigButton so that it will take the user back to the profile when clicked
     let bigButton = document.querySelector("#bigButtonSection")
-    bigButton.classList.toggle("inProfile")
-    bigButton.classList.toggle("inChat")
     document.querySelector("#bigButton").textContent = "PROFILE"
 
     populateChat();
