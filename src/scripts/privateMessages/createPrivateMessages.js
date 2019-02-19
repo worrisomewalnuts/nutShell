@@ -1,5 +1,6 @@
 import API from "../utilities/apiManager";
 import privateMessageHTML from "./privateMessageHTML";
+import messagesEL from "../profile/messagesEL";
 
 
 function createPrivateMessages(id) {
