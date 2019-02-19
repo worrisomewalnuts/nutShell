@@ -28,7 +28,9 @@ h1{
 
 #header{
     display: flex;
+    justify-content: space-between;
 }
+
 #image {
     width : 100px;
     height : 100px;
@@ -36,11 +38,14 @@ h1{
 #title {
     float :right;
     font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 40px;
+    font-size: 70px;
     text-align: center;
     padding-left: 30%;
     padding-right: 30%;
+    align-self: center;
+    color: #654321;
 }
+
 #bigContainer{
     display: flex
 }
@@ -66,6 +71,12 @@ text-align: right;
 font-size: 25px;
 font-style: italic;
 }
+
+.navTab {
+    margin-right: 15px;
+    color: burlywood;
+}
+
 .friendItem{
     font-style: italic;
     background-color: cornsilk;
@@ -78,6 +89,38 @@ font-style: italic;
 .oldestEvent{
     font-weight: bold;
     background-color: lightblue;
+}
+
+#bigButton {
+    background-image: url(../images/acorn.png);
+    background-repeat: no-repeat;
+    background-size: 77px, 119px;
+    height: 119px;
+    width: 77px;
+    border: none;
+    padding-top: 40px;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#logout {
+    color: burlywood;
+}
+
+#friends,
+#searchUsers,
+#tabContainer {
+    border-radius: 10px;
+    border: 2px solid #654321;
+}
+
+#addNews {
+    margin-top: 10px;
 }
 
 .profileCard{

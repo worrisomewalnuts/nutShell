@@ -8,11 +8,12 @@ const makeProfileHTML = (userId) => {
     const html = `
     <article>
     <div id = "header">
-            <img id = "image"></img>
-            <input id = "userId" type = "Hidden" value = ${userId}>
-            <section id = "title"> NutShell
-            </section>
-            <a href="" id = "logout"> LOGOUT </a>
+        <section id="bigButtonSection" class="hidden login">
+            <button id="bigButton">BIG BUTTON</button>
+        </section>
+        <input id = "userId" type = "Hidden" value = ${userId}>
+        <section id = "title"> NutShell</section>
+        <a href="" id = "logout"> LOG OUT </a>
     </div>
     <div id="navBar">
 
