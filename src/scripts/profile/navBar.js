@@ -8,7 +8,7 @@ const navBarhtml = () => {
         `<a href="#" id="navNews">News</a>
             <a href="#" id="navEvents">Events</a>
             <a href="#" id="navTasks">Tasks</a>
-            <a href="#" id="navMessage">Message</a>`
+            <a href="#" id="navMessage">Messages</a>`
     printToDom(html, "#navBar")
 }
 
@@ -52,7 +52,7 @@ const navbar = () => {
                     createTasks()
             } else if (event.target.id === "navMessage") {
                 html = `
-                    <h1>Messages</h1>
+                    <h1>Select A Friend To Chat With</h1>
                     <section id = "message">
                     </section>`
                     printToDom(html, "#tabContainer")
