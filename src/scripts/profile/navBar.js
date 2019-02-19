@@ -8,7 +8,7 @@ const navBarhtml = () => {
         `<a href="#" id="navNews">News</a>
             <a href="#" id="navEvents">Events</a>
             <a href="#" id="navTasks">Tasks</a>
-            <a href="#" id="navMessage">Message</a>`
+            <a href="#" id="navMessage">Choose Friend To Chat With</a>`
     printToDom(html, "#navBar")
 }
 
