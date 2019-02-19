@@ -11,7 +11,7 @@ const createEvents = () => {
 
     //make a section container for all events
     html +=
-    `
+        `
     <section id="eventsContainer">
     `
     //todo we will need to make sure we are using our hidden field user id here
@@ -30,7 +30,14 @@ const createEvents = () => {
 
         API.GET(`events?${getAPIFriendSearch}`).then(parsedEvents => {
 
-            let sortedEvents = parsedEvents.sort(function (eventA, eventB) {
+            //filter only events occuring after todays date
+            let dateAfterCurrentDate = parsedEvents.filter(function (event) {
+                if (new Date(event.eventDate) > new Date()) {
+                    return event
+                }
+            })
+
+            let sortedEvents = dateAfterCurrentDate.sort(function (eventA, eventB) {
                 return new Date(eventA.eventDate) - new Date(eventB.eventDate);
             })
             let oldestEventFlag = true
