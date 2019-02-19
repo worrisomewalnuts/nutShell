@@ -56,7 +56,7 @@ const navbar = () => {
                     <section id = "message">
                     </section>`
                     printToDom(html, "#tabContainer")
-                    createMessages()
+                    // createMessages()
             }
     })
 }
