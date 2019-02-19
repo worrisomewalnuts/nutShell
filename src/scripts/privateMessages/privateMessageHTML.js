@@ -8,7 +8,7 @@ function privateMessageHTML(messagesInThisConversation, friendId) {
     let id = parseInt(friendId)
     let userId = parseInt(document.querySelector("#userId").value)
     let HTMLString = `
-    <input id="userId" type="Hidden" value=${id}>
+    <input id="friendId" type="Hidden" value=${id}>
     `
     messagesInThisConversation.forEach(message => {
         if (message.senderId === userId) {
