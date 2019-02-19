@@ -2,7 +2,17 @@ import printToDOM from "../utilities/printToDOM"
 import populateChat from "./populateChat"
 const makeChatHTML = (userId) => {
     // creates base chat HTML with two hidden inputs in the new message form to store message ID and text content for messages being edited
-    const html = ` <article id="chatArticle">
+    const html = `
+    <div id = "header">
+        <section id="bigButtonSection" class="visible inChat">
+            <button id="bigButton">BIG BUTTON</button>
+        </section>
+        <input id = "userId" type = "Hidden" value = ${userId}>
+        <section id = "title"> NutShell</section>
+        <a href="" id = "logout"> LOG OUT </a>
+    </div>
+
+    <article id="chatArticle">
             <img></img>
             <input id="userId" type="Hidden" value=${userId}>
             <section id="postedChatMessages"></section>
