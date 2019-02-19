@@ -1,5 +1,7 @@
 import printToDom from "../utilities/printToDOM";
 import API from "../utilities/apiManager";
+import createPrivateMessages from "../privateMessages/createPrivateMessages";
+
 
 // creates a list of users that the logged in user follows, and provides buttons to unfollow/unfriend any "friended" users
 function friendHTML(friendList) {
@@ -34,7 +36,6 @@ function friendHTML(friendList) {
             friendList = friendList.sort((a, b) => {
                 return a[0].userName.localeCompare(b[0].userName);
             })
-
             friendList.map((friendObj) => {
                 let currentHTML = `
                 <section id="friend--${friendObj[0].id}"
@@ -51,6 +52,14 @@ function friendHTML(friendList) {
             })
             printToDom(friendHTML, "#friends")
             return
+        })
+        .then(() => {
+            document.querySelector("#friends").addEventListener("click", () => {
+                if (event.target.id.startsWith("message--")) {
+                    let id = event.target.id.split("--")[1]
+                    createPrivateMessages(id)
+                }
+            })
         })
 }
 
