@@ -5,10 +5,10 @@ import createTasks from "./createTasks";
 
 const navBarhtml = () => {
     const html =
-        `<a href="#" id="navNews">News</a>
-            <a href="#" id="navEvents">Events</a>
-            <a href="#" id="navTasks">Tasks</a>
-            <a href="#" id="navMessage">Messages</a>`
+        `<a href="#" id="navNews" class="navTab">News</a>
+            <a href="#" id="navEvents" class="navTab">Events</a>
+            <a href="#" id="navTasks" class="navTab">Tasks</a>
+            <a href="#" id="navMessage" class="navTab">Messages</a>`
     printToDom(html, "#navBar")
 }
 
