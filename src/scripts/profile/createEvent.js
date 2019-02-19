@@ -2,6 +2,7 @@ import API from "../utilities/apiManager"
 import printToDom from "../utilities/printToDOM"
 import { eventHtml, createAddEventHtml } from "./eventHTML"
 import createNewEvent from "./eventManager"
+
 let html = ""
 const createEvents = () => {
     html = ""
@@ -11,8 +12,8 @@ const createEvents = () => {
     //make a section container for all events
     html +=
         `
-<section id="eventsContainer">
-`
+    <section id="eventsContainer">
+    `
     //todo we will need to make sure we are using our hidden field user id here
     let currentUserId = document.querySelector("#userId").value
 
@@ -29,7 +30,14 @@ const createEvents = () => {
 
         API.GET(`events?${getAPIFriendSearch}`).then(parsedEvents => {
 
-            let sortedEvents = parsedEvents.sort(function (eventA, eventB) {
+            //filter only events occuring after todays date
+            let dateAfterCurrentDate = parsedEvents.filter(function (event) {
+                if (new Date(event.eventDate) > new Date()) {
+                    return event
+                }
+            })
+
+            let sortedEvents = dateAfterCurrentDate.sort(function (eventA, eventB) {
                 return new Date(eventA.eventDate) - new Date(eventB.eventDate);
             })
             let oldestEventFlag = true
@@ -61,15 +69,18 @@ const createEvents = () => {
                         createEvents()
                     })
                 } else {
-                    API.POST("events", createNewEvent()).then(() => {
-                        createEvents()
-                    })
+                    const newEvent = createNewEvent()
+                    //passed datavalidation
+                    if (newEvent != "") {
+                        API.POST("events", newEvent).then(() => {
+                            createEvents()
+                        })
+                    }
                 }
             })
 
             //event listener for single event edit and delete button
             document.querySelector("#eventsContainer").addEventListener("click", function () {
-
 
                 let action = event.target.id.split("--")[0]
                 let actionId = event.target.id.split("--")[1]
@@ -90,10 +101,7 @@ const createEvents = () => {
                 }
             })
         });
-
     })
 }
-
-
 
 export default createEvents
