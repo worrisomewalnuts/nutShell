@@ -1,6 +1,7 @@
 import API from "../utilities/apiManager";
 import createTasks from "./createTasks";
 import taskForm from "./taskForm";
+import { isEmpty, isProfanity } from "../utilities/dataValidation"
 
 const $ = document.querySelector.bind(document)
 
@@ -13,8 +14,14 @@ const submitButtonStatus = () => {
             completionDate: $("#completionDate").value,
             completionStatus: false
         }
-        API.POST("tasks", obj).then(createTasks)
-        $("#addNewTask").textContent = " Submit.."
+        if (isEmpty(obj.taskName) || isEmpty(obj.completionDate)) {
+            alert("One or more fields are empty")
+        } else if (isProfanity(obj.taskName) || isProfanity(obj.completionDate)) {
+            alert("One or more fields contain profanity")
+        } else {
+            API.POST("tasks", obj).then(createTasks)
+            $("#addNewTask").textContent = " Submit.."
+        }
     } else {
         //update -- after edit
         if ($("#addNewTask").textContent === " Update") {
