@@ -1,6 +1,7 @@
 import printToDom from "../utilities/printToDOM";
 import API from "../utilities/apiManager";
 import createPrivateMessages from "../privateMessages/createPrivateMessages";
+import messagesEL from "./messagesEL";
 
 
 // creates a list of users that the logged in user follows, and provides buttons to unfollow/unfriend any "friended" users
@@ -58,6 +59,7 @@ function friendHTML(friendList) {
                 if (event.target.id.startsWith("message--")) {
                     let id = event.target.id.split("--")[1]
                     createPrivateMessages(id)
+                    messagesEL()
                 }
             })
         })

@@ -43,6 +43,8 @@ function privateMessageHTML(messagesInThisConversation, friendId) {
             obj.messageText = document.querySelector("#newMessageText").value
             return API.POST("privateMessages", obj)
             .then(()=> {
+                localStorage.setItem("senderId", obj.senderId)
+                localStorage.setItem("recipientId", obj.recipientId)
                 createPrivateMessages(id)
             })
         }
