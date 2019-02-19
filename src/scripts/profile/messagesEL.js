@@ -9,7 +9,7 @@ const messagesEL = () => {
             let msg = localStorage.getItem("recipientId")
             let i = $("#userId").value
             //console.log(localStorage.getItem("recipientId"))
-            if (parseInt(localStorage.getItem("recipientId"))=== parseInt($("#userId").value))
+            if (parseInt(localStorage.getItem("senderId"))=== parseInt($("#userId").value))
               createPrivateMessages(localStorage.getItem("senderId"))
           }
         })
