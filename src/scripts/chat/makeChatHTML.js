@@ -9,7 +9,7 @@ const makeChatHTML = (userId) => {
         </section>
         <input id = "userId" type = "Hidden" value = ${userId}>
         <section id = "title"> NutShell</section>
-        <a href="" id = "logout"> LOG OUT </a>
+        <a href="" id = "logout"> LOGOUT </a>
     </div>
 
     <article id="chatArticle">

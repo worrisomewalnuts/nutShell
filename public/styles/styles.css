@@ -7,10 +7,6 @@ h1{
     margin-left: 30px;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
 #titleLogin{
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-size: 40px;
@@ -94,9 +90,9 @@ font-style: italic;
 #bigButton {
     background-image: url(../images/acorn.png);
     background-repeat: no-repeat;
-    background-size: 77px, 119px;
-    height: 119px;
-    width: 77px;
+    background-size: 96px, 149px;
+    height: 149px;
+    width: 96px;
     border: none;
     padding-top: 40px;
     font-size: 1em;
@@ -110,6 +106,7 @@ a {
 
 #logout {
     color: burlywood;
+    margin-right: 20px;
 }
 
 #friends,
