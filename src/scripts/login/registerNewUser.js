@@ -20,15 +20,34 @@ const registerNewUser = () => {
     document.querySelector(".output").innerHTML = html
 
     document.querySelector("#registerNewUser").addEventListener("click", function () {
-       let newUser = createNewUser()
+        let newUser = createNewUser()
 
-    API.POST("users", newUser).then(newUser=>{
-        //adding key(userID) to storageSession
-        sessionStorage.setItem("userID", `${newUser.id}`)
-        makeProfileHTML(newUser.id)
-    })
+        // Check if username or email already exists in database. If not, post new user.
 
-
+        API.GET("users")
+            .then(userArray => {
+                let checkDuplicate = false
+                userArray.forEach(user => {
+                    if (user.userName.toLowerCase() === newUser.userName.toLowerCase()) {
+                        checkDuplicate = true
+                        alert("This username is already taken. Please choose a different username.")
+                        return checkDuplicate
+                    } else if (user.email.toLowerCase() === newUser.email.toLowerCase()) {
+                        checkDuplicate = true
+                        alert("This email is already in use. Please choose a different email.")
+                        return checkDuplicate
+                    }
+                })
+                return checkDuplicate
+            }).then(checkDuplicate => {
+                if (checkDuplicate === false) {
+                    API.POST("users", newUser).then(newUser=>{
+                        //adding key(userID) to storageSession
+                        sessionStorage.setItem("userID", `${newUser.id}`)
+                        makeProfileHTML(newUser.id)
+                    })
+                }
+            })
     })
 }
 
@@ -49,9 +68,9 @@ const createNewUser = () => {
     const email = document.querySelector("#email").value
     const firstName = document.querySelector("#firstName").value
     const lastName = document.querySelector("#lastName").value
+
     let user = new User(userName, password, email, firstName, lastName);
     return user
-
 }
 
 
