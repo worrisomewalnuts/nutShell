@@ -2,6 +2,7 @@ import printToDom from "../utilities/printToDOM";
 import createNews from "./createNews";
 import createEvents from "./createEvent";
 import createTasks from "./createTasks";
+import setTimer from "./setTimer";
 
 const navBarhtml = () => {
     const html =
@@ -56,7 +57,12 @@ const navbar = () => {
                     <section id = "message">
                     </section>`
                     printToDom(html, "#tabContainer")
-                    createMessages()
+                    //localStorage.setItem("message", "hi")
+                    localStorage.clear()
+                    setTimer()
+                    localStorage.setItem("message", "hello")
+                    localStorage.getItem("message", "new")
+                    //createMessages()
             }
     })
 }
