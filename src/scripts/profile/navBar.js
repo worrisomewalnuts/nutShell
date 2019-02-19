@@ -7,7 +7,8 @@ const navBarhtml = () => {
     const html =
         `<a href="#" id="navNews">News</a>
             <a href="#" id="navEvents">Events</a>
-            <a href="#" id="navTasks">Tasks</a>`
+            <a href="#" id="navTasks">Tasks</a>
+            <a href="#" id="navMessage">Messages</a>`
     printToDom(html, "#navBar")
 }
 
@@ -49,6 +50,13 @@ const navbar = () => {
                     </section>`
                     printToDom(html, "#tabContainer")
                     createTasks()
+            } else if (event.target.id === "navMessage") {
+                html = `
+                    <h1>Select A Friend To Chat With</h1>
+                    <section id = "message">
+                    </section>`
+                    printToDom(html, "#tabContainer")
+                    // createMessages()
             }
     })
 }
