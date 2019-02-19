@@ -4,7 +4,7 @@ import createPrivateMessages from "./createPrivateMessages";
 
 
 function privateMessageHTML(messagesInThisConversation, friendId) {
-    
+
     let id = parseInt(friendId)
     let userId = parseInt(document.querySelector("#userId").value)
     let HTMLString = ""
@@ -41,6 +41,8 @@ function privateMessageHTML(messagesInThisConversation, friendId) {
             obj.messageText = document.querySelector("#newMessageText").value
             return API.POST("privateMessages", obj)
             .then(()=> {
+                localStorage.setItem("senderId", obj.senderId)
+                localStorage.setItem("recipientId", obj.recipientId)
                 createPrivateMessages(id)
             })
         }

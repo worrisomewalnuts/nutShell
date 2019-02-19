@@ -2,7 +2,8 @@ import printToDom from "../utilities/printToDOM";
 import createNews from "./createNews";
 import createEvents from "./createEvent";
 import createTasks from "./createTasks";
-import setTimer from "./setTimer";
+import setTimer from "./messagesEL";
+import messagesEL from "./messagesEL";
 
 const navBarhtml = () => {
     const html =
@@ -57,6 +58,7 @@ const navbar = () => {
                     <section id = "message">
                     </section>`
                     printToDom(html, "#tabContainer")
+                    messagesEL()
                     // createMessages()
             }
     })
