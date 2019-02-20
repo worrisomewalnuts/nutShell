@@ -5,15 +5,19 @@ import validate from "../utilities/dataValidation"
 
 const $ = document.querySelector.bind(document)
 
+const makeObject = () => {
+    return {
+        userId: $("#userId").value,
+        taskName: $("#taskName").value,
+        completionDate: $("#completionDate").value,
+        completionStatus: false
+    }
+}
+
 const submitButtonStatus = () => {
     //submit button
     if ($("#addNewTask").textContent === " Submit..") {
-        let obj = {
-            userId: $("#userId").value,
-            taskName: $("#taskName").value,
-            completionDate: $("#completionDate").value,
-            completionStatus: false
-        }
+         let obj = makeObject()
         if (validate(obj.taskName, obj.completionDate)) {
             API.POST("tasks", obj).then(createTasks)
             $("#addNewTask").textContent = " Submit.."
@@ -21,21 +25,15 @@ const submitButtonStatus = () => {
     } else {
         //update -- after edit
         if ($("#addNewTask").textContent === " Update") {
-            let obj = {
-                userId: $("#userId").value,
-                taskName: $("#taskName").value,
-                completionDate: $("#completionDate").value,
-                completionStatus: false,
-                id: $("#addNewTask").classList.value
-            }
+            let obj = makeObject()
+            obj.id = $("#addNewTask").classList.value
             API.EDIT(`tasks/${obj.id}`, obj)
                 .then(createTasks)
         }
         else {
             //adding new form
             taskForm()
-            let today = new Date().toISOString().substr(0, 10);
-            $("#completionDate").value = today
+             $("#completionDate").value = new Date().toISOString().substr(0, 10);
             taskManager.taskNameEL()
         }
     }
