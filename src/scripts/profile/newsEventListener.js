@@ -5,75 +5,82 @@ import createNews from "./createNews"
 import editNewsForm from "./editNewsForm"
 import validate from "../utilities/dataValidation"
 
+const $ = document.querySelector.bind(document)
+
+
+// Submit News Button
+const SubmitNews = (userId) => {
+    let news = $("#newsTitle").value
+    let newsSynopsis = $("#newsSynopsis").value
+    let newsURL = $("#newsURL").value
+
+    //run data validation and create new news if info is passed
+    if (validate(news, newsSynopsis, newsURL)) {
+        let newNewsObject = {
+            news: news,
+            newsSynopsis: newsSynopsis,
+            newsURL: newsURL,
+            userId: parseInt(userId),
+            date: Date().split(" ").splice(0, 4).join(" ")
+        }
+        // Add news to API and re-load news list
+        API.POST("news", newNewsObject)
+            .then(createNews)
+    }
+}
+
+// Delete News Button
+const DeleteNews = (userId) => {
+    // Find ID of news item to remove
+    let idToDelete = event.target.id.split("--")[1]
+    let stringToDelete = `news/${idToDelete}`
+    // Delete from API
+    API.DELETE(stringToDelete)
+        // Re-load news list
+        .then(response => {
+            createNews()
+        })
+}
+
 const newsEventListener = () => {
     document.querySelector("#news").addEventListener("click", (event) => {
+
         let userId = document.querySelector("#userId").value
         let buttonParent = event.target.parentElement
 
-        // ADD NEWS ITEM button
         if (event.target.id === "addNews") {
             let newsFormHTML = newsForm()
             printToDom(newsFormHTML, "#newsFormSection")
 
-            // SUBMIT button
         } else if (event.target.id === "submitNews") {
-            let news = document.querySelector("#newsTitle").value
-            let newsSynopsis = document.querySelector("#newsSynopsis").value
-            let newsURL = document.querySelector("#newsURL").value
+            SubmitNews(userId)
+            // Remove form
+            document.querySelector("#newsFormSection").innerHTML = ""
 
-            //run data validation and create new news info is passed
-            if(validate(news,newsSynopsis,newsURL)){
+            // Edit and Delete buttons only work for news posted by active user
+        } else if (event.target.id.startsWith("deleteNews") && buttonParent.classList.contains(`user--${userId}`)) {
+            DeleteNews(userId)
 
-                let newNewsObject = {
-                    news: news,
-                    newsSynopsis: newsSynopsis,
-                    newsURL: newsURL,
-                    userId: parseInt(userId),
-                    date: Date().split(" ").splice(0, 4).join(" ")
-                }
+        } else if (event.target.id.startsWith("editNewsButton") && buttonParent.classList.contains(`user--${userId}`)) {
+            // Find ID of news item to edit
+            let idToEdit = event.target.id.split("--")[1]
+            // Show edit form
+            let editFormHTML = editNewsForm(idToEdit)
+            printToDom(editFormHTML, "#newsFormSection")
 
-                API.POST("news", newNewsObject)
-                    .then(createNews)
-            }
+            // UPDATE button
+            document.querySelector("#updateNews").addEventListener("click", () => {
+                let news = document.querySelector("#editNewsTitle").value
+                let newsSynopsis = document.querySelector("#editNewsSynopsis").value
+                let newsURL = document.querySelector(`#newsLink--${idToEdit}`).href
 
-            // DELETE button
-        } else if (event.target.id.startsWith("deleteNews")) {
-
-            // Check that news belongs to active user
-            if (buttonParent.classList.contains(`user--${userId}`)) {
-                // Find ID of news item to remove
-                let idToDelete = event.target.id.split("--")[1]
-                let stringToDelete = `news/${idToDelete}`
-                // Delete from API
-                API.DELETE(stringToDelete)
-                    // Re-load news list
-                    .then(response => {
-                        createNews()
-                    })
-            }
-
-            // EDIT button
-        } else if (event.target.id.startsWith("editNewsButton")) {
-
-            // Check that news belongs to active user
-            if (buttonParent.classList.contains(`user--${userId}`)) {
-                // Find ID of news item to edit
-                let idToEdit = event.target.id.split("--")[1]
-                // Show edit form
-                let editFormHTML = editNewsForm(idToEdit)
-                printToDom(editFormHTML, "#newsFormSection")
-
-                // UPDATE button
-                document.querySelector("#updateNews").addEventListener("click", () => {
-                    let news = document.querySelector("#editNewsTitle").value
-                    let newsSynopsis = document.querySelector("#editNewsSynopsis").value
-                    let newsURL = document.querySelector(`#newsLink--${idToEdit}`).href
-
+                if (validate(news, newsSynopsis, newsURL)) {
                     let updatedNewsObject = {
                         news: news,
                         newsSynopsis: newsSynopsis,
                         newsURL: newsURL,
-                        userId: parseInt(userId)
+                        userId: parseInt(userId),
+                        date: Date().split(" ").splice(0, 4).join(" ")
                     }
 
                     let apiString = `news/${idToEdit}`
@@ -85,10 +92,12 @@ const newsEventListener = () => {
 
                     // Remove edit form
                     document.querySelector("#newsFormSection").innerHTML = ""
-                })
-            }
+                }
+            })
         }
     })
 }
+
+
 
 export default newsEventListener

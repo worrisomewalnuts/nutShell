@@ -19,8 +19,9 @@ const navbar = () => {
     let html =
         `<h1>News</h1>
         <section id = "news">
-        <section id="newsListSection"></section>
-        <section id="newsFormSection"></section>
+            <button id='addNews'>Add News Item</button>
+            <section id="newsFormSection"></section>
+            <section id="newsListSection"></section>
         </section>`
     printToDom(html, "#tabContainer")
     createNews()
@@ -31,9 +32,10 @@ const navbar = () => {
                 html =
                     `<h1>News</h1>
                 <section id = "news">
-                <section id="newsListSection"></section>
-                <section id="newsFormSection"></section>
-            </section>`
+                    <button id='addNews'>Add News Item</button>
+                    <section id="newsFormSection"></section>
+                    <section id="newsListSection"></section>
+                </section>`
                 printToDom(html, "#tabContainer")
                 createNews()
             }
