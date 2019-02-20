@@ -8,12 +8,6 @@ import { isEmpty, isProfanity } from "../utilities/dataValidation"
 const $ = document.querySelector.bind(document)
 
 
-// Add News Button
-const AddNews = () => {
-    let newsFormHTML = newsForm()
-    printToDom(newsFormHTML, "#newsFormSection")
-}
-
 // Submit News Button
 const SubmitNews = (userId) => {
     let news = $("#newsTitle").value
@@ -33,44 +27,48 @@ const SubmitNews = (userId) => {
             userId: parseInt(userId),
             date: Date().split(" ").splice(0, 4).join(" ")
         }
-
+        // Add news to API and re-load news list
         API.POST("news", newNewsObject)
             .then(createNews)
     }
+}
+
+// Delete News Button
+const DeleteNews = (userId) => {
+    // Find ID of news item to remove
+    let idToDelete = event.target.id.split("--")[1]
+    let stringToDelete = `news/${idToDelete}`
+    // Delete from API
+    API.DELETE(stringToDelete)
+        // Re-load news list
+        .then(response => {
+            createNews()
+        })
+}
+
+// Update News Button
+const UpdateNews = (userId) => {
+
 }
 
 
 const newsEventListener = () => {
     document.querySelector("#news").addEventListener("click", (event) => {
 
-    let userId = document.querySelector("#userId").value
-    let buttonParent = event.target.parentElement
+        let userId = document.querySelector("#userId").value
+        let buttonParent = event.target.parentElement
 
-        // ADD NEWS ITEM button
         if (event.target.id === "addNews") {
-            AddNews()
+            let newsFormHTML = newsForm()
+            printToDom(newsFormHTML, "#newsFormSection")
 
-            // SUBMIT button
         } else if (event.target.id === "submitNews") {
             SubmitNews(userId)
 
-            // DELETE button
-        } else if (event.target.id.startsWith("deleteNews")) {
+            // Edit and Delete buttons only work for news posted by active user
+        } else if (event.target.id.startsWith("deleteNews") && buttonParent.classList.contains(`user--${userId}`)) {
+            DeleteNews(userId)
 
-            // Check that news belongs to active user
-            if (buttonParent.classList.contains(`user--${userId}`)) {
-                // Find ID of news item to remove
-                let idToDelete = event.target.id.split("--")[1]
-                let stringToDelete = `news/${idToDelete}`
-                // Delete from API
-                API.DELETE(stringToDelete)
-                    // Re-load news list
-                    .then(response => {
-                        createNews()
-                    })
-            }
-
-            // EDIT button
         } else if (event.target.id.startsWith("editNewsButton") && buttonParent.classList.contains(`user--${userId}`)) {
             // Find ID of news item to edit
             let idToEdit = event.target.id.split("--")[1]
