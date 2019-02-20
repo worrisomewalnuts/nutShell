@@ -24,7 +24,6 @@ const createNewEvent = () => {
     } else {
         event = new Event(currentUserId, name, location, date);
     }
-
     return event
 }
 export default createNewEvent
