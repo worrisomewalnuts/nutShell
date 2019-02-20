@@ -25,6 +25,7 @@ const makeChatHTML = (userId) => {
         </article>`
 
     printToDOM(html, ".output")
+
     // Sets bigButton so that it will take the user back to the profile when clicked
     let bigButton = document.querySelector("#bigButtonSection")
     document.querySelector("#bigButton").textContent = "PROFILE"

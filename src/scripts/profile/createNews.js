@@ -38,7 +38,7 @@ const createNews = () => {
                         let newsItemHTML = newsHTML(newsObject)
                         newsToPrint += `${newsItemHTML}`
                     })
-                    newsToPrint += "<button id='addNews'>Add News Item</button>"
+                    // newsToPrint += "<button id='addNews'>Add News Item</button>"
                         // Print HTML news to DOM
                         printToDom(newsToPrint, "#newsListSection")
 

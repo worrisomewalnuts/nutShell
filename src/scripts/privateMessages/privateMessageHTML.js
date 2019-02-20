@@ -36,6 +36,12 @@ function privateMessageHTML(messagesInThisConversation, friendId) {
     </section>
     `
     printToDom(HTMLString, "#tabContainer")
+
+    // maximum vertical scroll
+    let scrollBottom = document.querySelector("#tabContainer").scrollHeight - document.querySelector("#tabContainer").clientHeight
+    // Set vertical scroller to bottom
+    document.querySelector("#tabContainer").scrollTop = scrollBottom
+
     document.querySelector("#tabContainer").addEventListener("click", () => {
         if (event.target.id === "submitMessage") {
             let obj = {}
@@ -44,13 +50,13 @@ function privateMessageHTML(messagesInThisConversation, friendId) {
             obj.messageDateTime = Date().split(" ").splice(0, 5).join(" ")
             obj.messageText = document.querySelector("#newMessageText").value
             return API.POST("privateMessages", obj)
-            .then(()=> {
-                let newCount = parseInt(localStorage.getItem("count")) + 1
-                localStorage.setItem("count", newCount)
-                localStorage.setItem("senderId", obj.senderId)
-                localStorage.setItem("recipientId", obj.recipientId)
-                createPrivateMessages(id)
-            })
+                .then(() => {
+                    let newCount = parseInt(localStorage.getItem("count")) + 1
+                    localStorage.setItem("count", newCount)
+                    localStorage.setItem("senderId", obj.senderId)
+                    localStorage.setItem("recipientId", obj.recipientId)
+                    createPrivateMessages(id)
+                })
         }
     })
 }

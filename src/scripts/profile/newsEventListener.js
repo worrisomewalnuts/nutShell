@@ -3,7 +3,7 @@ import printToDom from "../utilities/printToDOM"
 import API from "../utilities/apiManager"
 import createNews from "./createNews"
 import editNewsForm from "./editNewsForm"
-import { isEmpty, isProfanity } from "../utilities/dataValidation"
+import validate from "../utilities/dataValidation"
 
 const $ = document.querySelector.bind(document)
 
@@ -15,11 +15,7 @@ const SubmitNews = (userId) => {
     let newsURL = $("#newsURL").value
 
     //run data validation and create new news if info is passed
-    if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
-        alert("One or more fields are empty")
-    } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
-        alert("One or more fields contain profanity")
-    } else {
+    if (validate(news, newsSynopsis, newsURL)) {
         let newNewsObject = {
             news: news,
             newsSynopsis: newsSynopsis,
@@ -46,12 +42,6 @@ const DeleteNews = (userId) => {
         })
 }
 
-// Update News Button
-const UpdateNews = (userId) => {
-
-}
-
-
 const newsEventListener = () => {
     document.querySelector("#news").addEventListener("click", (event) => {
 
@@ -64,6 +54,8 @@ const newsEventListener = () => {
 
         } else if (event.target.id === "submitNews") {
             SubmitNews(userId)
+            // Remove form
+            document.querySelector("#newsFormSection").innerHTML = ""
 
             // Edit and Delete buttons only work for news posted by active user
         } else if (event.target.id.startsWith("deleteNews") && buttonParent.classList.contains(`user--${userId}`)) {
@@ -82,30 +74,29 @@ const newsEventListener = () => {
                 let newsSynopsis = document.querySelector("#editNewsSynopsis").value
                 let newsURL = document.querySelector(`#newsLink--${idToEdit}`).href
 
-                let updatedNewsObject = {
-                    news: news,
-                    newsSynopsis: newsSynopsis,
-                    newsURL: newsURL,
-                    userId: parseInt(userId),
-                    date: Date().split(" ").splice(0, 4).join(" ")
+                if (validate(news, newsSynopsis, newsURL)) {
+                    let updatedNewsObject = {
+                        news: news,
+                        newsSynopsis: newsSynopsis,
+                        newsURL: newsURL,
+                        userId: parseInt(userId),
+                        date: Date().split(" ").splice(0, 4).join(" ")
+                    }
+
+                    let apiString = `news/${idToEdit}`
+                    // API call
+                    API.EDIT(apiString, updatedNewsObject)
+                        .then(response => {
+                            createNews()
+                        })
+
+                    // Remove edit form
+                    document.querySelector("#newsFormSection").innerHTML = ""
                 }
-
-                let apiString = `news/${idToEdit}`
-                // API call
-                API.EDIT(apiString, updatedNewsObject)
-                    .then(response => {
-                        createNews()
-                    })
-
-                // Remove edit form
-                document.querySelector("#newsFormSection").innerHTML = ""
             })
         }
     })
 }
-
-
-
 
 
 
