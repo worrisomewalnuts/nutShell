@@ -65,6 +65,11 @@ h1{
 
 }
 
+#chatArticle {
+    overflow-y: scroll;
+    max-height: 750px;
+}
+
 #navBar{
 text-align: right;
 font-size: 25px;
