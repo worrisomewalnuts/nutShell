@@ -7,39 +7,52 @@ import { isEmpty, isProfanity } from "../utilities/dataValidation"
 
 const $ = document.querySelector.bind(document)
 
+
+// Add News Button
+const AddNews = () => {
+    let newsFormHTML = newsForm()
+    printToDom(newsFormHTML, "#newsFormSection")
+}
+
+// Submit News Button
+const SubmitNews = () => {
+    let news = $("#newsTitle").value
+    let newsSynopsis = $("#newsSynopsis").value
+    let newsURL = $("#newsURL").value
+
+    //run data validation and create new news if info is passed
+    if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
+        alert("One or more fields are empty")
+    } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
+        alert("One or more fields contain profanity")
+    } else {
+        let newNewsObject = {
+            news: news,
+            newsSynopsis: newsSynopsis,
+            newsURL: newsURL,
+            userId: parseInt(userId),
+            date: Date().split(" ").splice(0, 4).join(" ")
+        }
+
+        API.POST("news", newNewsObject)
+            .then(createNews)
+    }
+}
+
+
 const newsEventListener = () => {
     document.querySelector("#news").addEventListener("click", (event) => {
-        let userId = document.querySelector("#userId").value
-        let buttonParent = event.target.parentElement
+
+    let userId = document.querySelector("#userId").value
+    let buttonParent = event.target.parentElement
 
         // ADD NEWS ITEM button
         if (event.target.id === "addNews") {
-            let newsFormHTML = newsForm()
-            printToDom(newsFormHTML, "#newsFormSection")
+            AddNews()
 
             // SUBMIT button
         } else if (event.target.id === "submitNews") {
-            let news = document.querySelector("#newsTitle").value
-            let newsSynopsis = document.querySelector("#newsSynopsis").value
-            let newsURL = document.querySelector("#newsURL").value
-
-            //run data validation and create new news if info is passed
-            if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
-                alert("One or more fields are empty")
-            } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
-                alert("One or more fields contain profanity")
-            } else {
-                let newNewsObject = {
-                    news: news,
-                    newsSynopsis: newsSynopsis,
-                    newsURL: newsURL,
-                    userId: parseInt(userId),
-                    date: Date().split(" ").splice(0, 4).join(" ")
-                }
-
-                API.POST("news", newNewsObject)
-                    .then(createNews)
-            }
+            SubmitNews()
 
             // DELETE button
         } else if (event.target.id.startsWith("deleteNews")) {
@@ -94,36 +107,6 @@ const newsEventListener = () => {
 }
 
 
-// // Add News Button
-// $("#addNews").addEventListener("click", (event) => {
-//     let newsFormHTML = newsForm()
-//     printToDom(newsFormHTML, "#newsFormSection")
-// })
-
-// // Submit News Button
-// $("#submitNews").addEventListener("click", (event) => {
-//     let news = document.querySelector("#newsTitle").value
-//     let newsSynopsis = document.querySelector("#newsSynopsis").value
-//     let newsURL = document.querySelector("#newsURL").value
-
-//     //run data validation and create new news if info is passed
-//     if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
-//         alert("One or more fields are empty")
-//     } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
-//         alert("One or more fields contain profanity")
-//     } else {
-//         let newNewsObject = {
-//             news: news,
-//             newsSynopsis: newsSynopsis,
-//             newsURL: newsURL,
-//             userId: parseInt(userId),
-//             date: Date().split(" ").splice(0, 4).join(" ")
-//         }
-
-//         API.POST("news", newNewsObject)
-//             .then(createNews)
-//     }
-// })
 
 
 
