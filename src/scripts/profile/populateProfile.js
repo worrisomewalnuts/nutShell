@@ -3,7 +3,7 @@ import createFriends from "./createFriends"
 import bigButton from "../utilities/bigButton"
 
 const populateProfile = () => {
-
+    // localStorage.setItem("count", 0)
     createFriends();
 
     let oldElement = document.querySelector("#bigButton")

@@ -94,36 +94,36 @@ const newsEventListener = () => {
 }
 
 
-// Add News Button
-$("#addNews").addEventListener("click", (event) => {
-    let newsFormHTML = newsForm()
-    printToDom(newsFormHTML, "#newsFormSection")
-})
+// // Add News Button
+// $("#addNews").addEventListener("click", (event) => {
+//     let newsFormHTML = newsForm()
+//     printToDom(newsFormHTML, "#newsFormSection")
+// })
 
-// Submit News Button
-$("#submitNews").addEventListener("click", (event) => {
-    let news = document.querySelector("#newsTitle").value
-    let newsSynopsis = document.querySelector("#newsSynopsis").value
-    let newsURL = document.querySelector("#newsURL").value
+// // Submit News Button
+// $("#submitNews").addEventListener("click", (event) => {
+//     let news = document.querySelector("#newsTitle").value
+//     let newsSynopsis = document.querySelector("#newsSynopsis").value
+//     let newsURL = document.querySelector("#newsURL").value
 
-    //run data validation and create new news if info is passed
-    if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
-        alert("One or more fields are empty")
-    } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
-        alert("One or more fields contain profanity")
-    } else {
-        let newNewsObject = {
-            news: news,
-            newsSynopsis: newsSynopsis,
-            newsURL: newsURL,
-            userId: parseInt(userId),
-            date: Date().split(" ").splice(0, 4).join(" ")
-        }
+//     //run data validation and create new news if info is passed
+//     if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
+//         alert("One or more fields are empty")
+//     } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
+//         alert("One or more fields contain profanity")
+//     } else {
+//         let newNewsObject = {
+//             news: news,
+//             newsSynopsis: newsSynopsis,
+//             newsURL: newsURL,
+//             userId: parseInt(userId),
+//             date: Date().split(" ").splice(0, 4).join(" ")
+//         }
 
-        API.POST("news", newNewsObject)
-            .then(createNews)
-    }
-})
+//         API.POST("news", newNewsObject)
+//             .then(createNews)
+//     }
+// })
 
 
 
