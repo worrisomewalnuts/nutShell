@@ -4,6 +4,9 @@ import createPrivateMessages from "./createPrivateMessages";
 
 
 function privateMessageHTML(messagesInThisConversation, friendId) {
+    let oldElement = document.querySelector("#tabContainer")
+    let newElement = oldElement.cloneNode(true)
+    oldElement.parentNode.replaceChild(newElement, oldElement);
     let id = parseInt(friendId)
     let userId = parseInt(document.querySelector("#userId").value)
     let HTMLString = `
