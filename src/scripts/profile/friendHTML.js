@@ -39,9 +39,10 @@ function friendHTML(friendList) {
             })
             friendList.map((friendObj) => {
                 let currentHTML = `
-                <section id="friend--${friendObj[0].id}"
+                <section id="friend--${friendObj[0].id}>
                 <div id="#${friendObj[0].id}">${friendObj[0].userName}</div>
                 <button id="delete--${friendObj[0].id}">Unfollow</button>
+                </section>
                 `
                 // <button id="message--${friendObj[0].id}">Message</button>
                 if(reciprocatedFriendships.includes(friendObj[0].id)) {

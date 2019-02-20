@@ -3,9 +3,12 @@ import createFriends from "./createFriends"
 import bigButton from "../utilities/bigButton"
 
 const populateProfile = () => {
-    // localStorage.setItem("count", 0)
-    createFriends();
+    window.localStorage.clear()
+    localStorage.setItem("count", 0)
+    localStorage.setItem("senderId", 0)
+    localStorage.setItem("recipientId", 0)
 
+    createFriends();
     let oldElement = document.querySelector("#bigButton")
     let newElement = oldElement.cloneNode(true)
     oldElement.parentNode.replaceChild(newElement, oldElement);
