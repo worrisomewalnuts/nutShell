@@ -1,19 +1,22 @@
 import createPrivateMessages from "../privateMessages/createPrivateMessages";
 
-const $ = document.querySelector.bind(document)
-
 const messagesEL = () => {
 
-    window.addEventListener("storage", function(e) {
-        if(e.storageArea===localStorage){
-            let msg = localStorage.getItem("recipientId")
-            let i = $("#userId").value
-            //console.log(localStorage.getItem("recipientId"))
-            if (parseInt(localStorage.getItem("senderId"))=== parseInt($("#userId").value))
-              createPrivateMessages(localStorage.getItem("senderId"))
-          }
-        })
+  window.addEventListener("storage", function (e) {
+    // if (e.storageArea === localStorage) {
+    console.log(parseInt(localStorage.getItem("count")))
+    console.log(parseInt(localStorage.getItem("senderId")))
+    console.log(parseInt(document.querySelector("#friendId").value))
+    console.log(parseInt(localStorage.getItem("recipientId")))
+    console.log(parseInt(document.querySelector("#userId").value))
+
+    if ((parseInt(localStorage.getItem("senderId")) === parseInt(document.querySelector("#friendId").value)) && (parseInt(localStorage.getItem("recipientId")) === parseInt(document.querySelector("#userId").value))) {
+      createPrivateMessages(parseInt(document.querySelector("#friendId").value))
+    }
+  })
 }
+// )
+// }
 
 
 
