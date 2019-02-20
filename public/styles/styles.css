@@ -1,3 +1,7 @@
+body{
+    padding:25px;
+}
+
 h1{
     text-align: center;
     font-size: 20px;
@@ -5,6 +9,10 @@ h1{
 
 .taskName {
     margin-left: 30px;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 #titleLogin{
@@ -126,4 +134,5 @@ a {
     padding: 15px 25px;
     margin: 25px 5px;
     box-shadow: 5px 10px 18px #888888;
+
 }

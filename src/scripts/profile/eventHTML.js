@@ -11,7 +11,7 @@ const eventHtml = (event, eventClass) => {
         <p>Event Date: ${event.eventDate}</p>
         `
 
-    if (eventClass != "friendItem"){
+    if (eventClass != "friendItem") {
 
         html +=
             `
@@ -26,17 +26,18 @@ const eventHtml = (event, eventClass) => {
     return html
 }
 
-const createAddEventHtml = () => {
-    return `
+const createSubmitSectionHtml= ()=> {
+   return  `
     <section id = "addEventSection">
-        <label>Event Name: </label>
-        <input type="text" id="eventNameInput"></input>
-        <label>Event Location: </label>
-        <input type="text" id="eventLocationInput"></input>
-        <label>Event Date: </label>
-        <input type="date" name="eventDate" id="eventDateInput"></input:date>
-        <button id="submitEvent" value="0">submit</button>
-    </section>
-    `
+    <label>Event Name: </label>
+    <input type="text" id="eventNameInput"></input>
+    <label>Event Location: </label>
+    <input type="text" id="eventLocationInput"></input>
+    <label>Event Date: </label>
+    <input type="date" name="eventDate" id="eventDateInput"></input:date>
+    <button id="submitEvent" value="0">submit</button>
+</section>
+`
 }
-export { eventHtml, createAddEventHtml }
+
+export { eventHtml,createSubmitSectionHtml }
