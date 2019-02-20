@@ -1,4 +1,4 @@
-import { isEmpty, isProfanity } from "../utilities/dataValidation"
+import validate from "../utilities/dataValidation"
 
 class Event {
     constructor(userId, name, location, date) {
@@ -17,11 +17,7 @@ const createNewEvent = () => {
     const date = document.querySelector("#eventDateInput").value
 
     let event = ""
-    if (isEmpty(name) || isEmpty(location) || isEmpty(date)) {
-        alert("One or more fields are empty")
-    } else if (isProfanity(name) || isProfanity(location) || isProfanity(date)) {
-        alert("One or more fields contain profanity")
-    } else {
+    if (validate(name, location, date)) {
         event = new Event(currentUserId, name, location, date);
     }
     return event

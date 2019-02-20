@@ -93,4 +93,18 @@ const isProfanity = (stringToCheck) => {
     return flag;
 }
 
-export {isEmpty, isProfanity}
+const validate = (...arg) => {
+    for (let i = 0; i < arg.length; i++) {
+        let el = arg[i];
+        if (isEmpty(el)) {
+            alert("One or more fields are empty")
+            return false;
+        }
+        else if (isProfanity(el)) {
+            alert("One or more fields contain profanity")
+            return false;
+        }
+    }
+    return true
+}
+export default validate
