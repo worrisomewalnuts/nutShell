@@ -15,7 +15,7 @@ const AddNews = () => {
 }
 
 // Submit News Button
-const SubmitNews = () => {
+const SubmitNews = (userId) => {
     let news = $("#newsTitle").value
     let newsSynopsis = $("#newsSynopsis").value
     let newsURL = $("#newsURL").value
@@ -52,7 +52,7 @@ const newsEventListener = () => {
 
             // SUBMIT button
         } else if (event.target.id === "submitNews") {
-            SubmitNews()
+            SubmitNews(userId)
 
             // DELETE button
         } else if (event.target.id.startsWith("deleteNews")) {
