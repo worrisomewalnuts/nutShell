@@ -3,7 +3,7 @@ import printToDom from "../utilities/printToDOM"
 import API from "../utilities/apiManager"
 import createNews from "./createNews"
 import editNewsForm from "./editNewsForm"
-import { isEmpty, isProfanity } from "../utilities/dataValidation"
+import validate from "../utilities/dataValidation"
 
 const newsEventListener = () => {
     document.querySelector("#news").addEventListener("click", (event) => {
@@ -22,11 +22,8 @@ const newsEventListener = () => {
             let newsURL = document.querySelector("#newsURL").value
 
             //run data validation and create new news info is passed
-            if (isEmpty(news) || isEmpty(newsSynopsis) || isEmpty(newsURL)) {
-                alert("One or more fields are empty")
-            } else if (isProfanity(news) || isProfanity(newsSynopsis) || isProfanity(newsURL)) {
-                alert("One or more fields contain profanity")
-            } else {
+            if(validate(news,newsSynopsis,newsURL)){
+
                 let newNewsObject = {
                     news: news,
                     newsSynopsis: newsSynopsis,
