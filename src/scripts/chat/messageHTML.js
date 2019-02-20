@@ -48,7 +48,13 @@ function messageHTML(parsedMessages) {
             })
             // prints all of the message HTML blocks
             printToDom(messageHTML, "#postedChatMessages")
+            
+            // maximum vertical scroll
+            let scrollBottom = document.querySelector("#chatArticle").scrollHeight - document.querySelector("#chatArticle").clientHeight
+            // Set vertical scroller to bottom
+            document.querySelector("#chatArticle").scrollTop = scrollBottom
         })
+
         // adds event listeners to all buttons
         .then(() => {
             document.querySelector("#chatArticle").addEventListener("click", () => {

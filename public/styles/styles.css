@@ -68,6 +68,14 @@ h1{
     height : 70%;
     padding: 10px;
     border: black 1px solid;
+    overflow-y: scroll;
+    max-height: 750px;
+
+}
+
+#chatArticle {
+    overflow-y: scroll;
+    max-height: 750px;
 }
 
 #navBar{
