@@ -9,7 +9,6 @@ const populateProfile = () => {
     localStorage.setItem("recipientId", 0)
 
     createFriends();
-
     let oldElement = document.querySelector("#bigButton")
     let newElement = oldElement.cloneNode(true)
     oldElement.parentNode.replaceChild(newElement, oldElement);
