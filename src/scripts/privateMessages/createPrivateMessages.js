@@ -1,12 +1,8 @@
 import API from "../utilities/apiManager";
 import privateMessageHTML from "./privateMessageHTML";
-import messagesEL from "../profile/messagesEL";
 
 
 function createPrivateMessages(id) {
-    let oldElement = document.querySelector("#tabContainer")
-    let newElement = oldElement.cloneNode(true)
-    oldElement.parentNode.replaceChild(newElement, oldElement);
     let friendId = parseInt(id)
     let userId = parseInt(document.querySelector("#userId").value)
     return API.GET("privateMessages")
