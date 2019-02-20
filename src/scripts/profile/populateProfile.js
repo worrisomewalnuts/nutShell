@@ -3,6 +3,10 @@ import createFriends from "./createFriends"
 import bigButton from "../utilities/bigButton"
 
 const populateProfile = () => {
+    window.localStorage.clear()
+    localStorage.setItem("count", 0)
+    localStorage.setItem("senderId", 0)
+    localStorage.setItem("recipientId", 0)
 
     createFriends();
 
